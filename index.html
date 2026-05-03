@@ -913,13 +913,14 @@
     background: url('https://drive.google.com/thumbnail?id=1M6Cjvrvo18uQEPnJlJz6mLMKrRvw9riF&sz=w800') no-repeat center center;
     background-size: contain;
     width: 100%;
-    min-height: 300px; /* Controla qué tan grande se ve el marco */
+    min-height: 150px; /* Reducido de 300px a 150px para quitar el espacio en blanco */
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 10px;
+    margin-top: 0;
 ">
-    <h2 class="title-cursive-small texto-blanco-asistencia" style="margin: 0; padding: 0 10px; text-align: center; white-space: nowrap;font-size: 2.3rem">
+    <h2 class="title-cursive-small texto-blanco-asistencia" style="margin: 0; padding: 0 10px; text-align: center; white-space: nowrap; font-size: 2.3rem;">
     Confirma tu Asistencia
 </h2>
 </div>
@@ -957,7 +958,9 @@
         <input type="text" name="acompanante" style="width: 100%; padding: 10px; margin-top: 5px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 8px; font-family: 'Montserrat', sans-serif; box-sizing: border-box;">
 
         <label style="font-family: 'Montserrat', sans-serif; font-size: 0.85rem; color: var(--text-dark); display: block; text-align: center; margin-bottom: 10px; font-weight:bold;">Restricción Alimentaria</label>
-        <div class="radio-group">
+        
+        <!-- ESTE ES EL CONTENEDOR 2x2 MÁGICO -->
+        <div class="radio-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 15px;">
           <input type="radio" id="dieta-ninguna" name="restricciones" value="Ninguna" checked>
           <label for="dieta-ninguna">Ninguna</label>
           <input type="radio" id="dieta-celiaco" name="restricciones" value="Celiaco">
@@ -967,6 +970,7 @@
           <input type="radio" id="dieta-otra" name="restricciones" value="Otra">
           <label for="dieta-otra">Otra</label>
         </div>
+        
         <input type="text" id="dieta-otra-texto" placeholder="Por favor especifica..." style="display: none; width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 8px; font-family: 'Montserrat', sans-serif; box-sizing: border-box;">
 
         <label style="font-family: 'Montserrat', sans-serif; font-size: 0.85rem; color: var(--text-dark); font-weight:bold;">Déjanos un mensaje</label>
