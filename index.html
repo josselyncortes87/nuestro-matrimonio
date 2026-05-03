@@ -1229,17 +1229,28 @@
       btn.innerText = 'Enviando...'; 
       btn.disabled = true;
       
-      // Conexión con tu Google Sheets
-      google.script.run.withSuccessHandler(function(respuesta) {
+      // Conexión con Google Sheets
+      // 1. Empaquetamos los datos del formulario
+      const formData = new FormData(form);
+
+      // 2. Enviamos los datos a través del puente hacia Apps Script
+      // ¡IMPORTANTE! Pega aquí el link largo que te dio Google al implementar la Web App
+      const URL_WEB_APP = "https://script.google.com/macros/s/AKfycbzO8E6ROcWA-G5pTgVMyshDuCstAM69nnYGIq0_d0vlSs2HDDFMB600rJwX5OBkQmsj/exec";
+
+      fetch(URL_WEB_APP, {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.text())
+      .then(respuesta => {
         if(respuesta === "Éxito") { 
           form.style.display = 'none'; 
           document.getElementById('form-response').style.display = 'block'; 
-          // Esto hace que la pantalla se deslice suavemente hacia el mensaje de éxito
-  document.getElementById('form-response').scrollIntoView({ behavior: 'smooth', block: 'center' });
+          document.getElementById('form-response').scrollIntoView({ behavior: 'smooth', block: 'center' });
           
           // Actualizar el carrusel visualmente si el invitado dejó mensaje
           if(msgInput && msgInput.value.trim() !== "") {
-            const track = document.getElementById('carousel-track');
+            const track = document.getElementById('carousel-track'); // Asegúrate de que el ID coincida con tu carrusel
             if(track) {
               const newSlide = document.createElement('div');
               newSlide.className = 'carousel-slide';
@@ -1250,7 +1261,7 @@
                 </div>
               `;
               track.insertBefore(newSlide, track.firstChild);
-              currentSlide = 0; // Mostrar el mensaje recién creado
+              currentSlide = 0; 
               updateCarousel();
             }
           }
@@ -1260,7 +1271,12 @@
           btn.innerText = 'Enviar Confirmación'; 
           btn.disabled = false; 
         }
-      }).procesarRSVP(form);
+      })
+      .catch(error => {
+        alert("Hubo un problema al enviar. Por favor intenta de nuevo.");
+        btn.innerText = 'Enviar Confirmación'; 
+        btn.disabled = false; 
+      });
     }
 
     // 6. LÓGICA DEL CARRUSEL
