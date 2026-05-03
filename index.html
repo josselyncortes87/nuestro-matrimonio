@@ -599,26 +599,6 @@
 .delay-4 { transition-delay: 1.7s; } /* Jordán */
 .delay-5 { transition-delay: 2.2s; } /* Despedida */
 
-/* =========================================
-   EFECTO ESCRITURA A MANO (Para Nuestra Historia)
-   ========================================= */
-.escribir-mano {
-  display: inline-block;
-  white-space: nowrap; /* Obliga al texto a estar en una sola línea */
-  
-  /* Escondemos todo el texto "tapándolo" desde la derecha */
-  -webkit-clip-path: inset(0 100% 0 0);
-  clip-path: inset(0 100% 0 0);
-  
-  /* La velocidad de la escritura (2.5 segundos) */
-  transition: -webkit-clip-path 2.5s ease-in-out, clip-path 2.5s ease-in-out;
-}
-
-.escribir-mano.visible {
-  /* Destapamos todo el texto (le pongo -10% para que no corte la colita de la última letra) */
-  -webkit-clip-path: inset(0 -10% 0 0);
-  clip-path: inset(0 -10% 0 0);
-}
 
 /* =========================================
    SECCIÓN CÓMO LLEGAR (Acuarela y Caja Cristal)
@@ -892,7 +872,9 @@
 <div style="margin-top: -40px; margin-bottom: 10px; text-align: center;">
   
   <!-- EL TEXTO ANIMADO (sin márgenes, solo hace su magia) -->
-  <h2 class="title-cursive-small escribir-mano" style="margin: 0;">Nuestra Historia</h2>
+  <h2 class="title-cursive fade-in" style="text-align: center; color: var(--sage-green); margin-top: 30px; margin-bottom: 20px;">
+  Nuestra Historia
+</h2>
 
 </div>
         
