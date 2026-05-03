@@ -959,16 +959,19 @@
 
         <label style="font-family: 'Montserrat', sans-serif; font-size: 0.85rem; color: var(--text-dark); display: block; text-align: center; margin-bottom: 10px; font-weight:bold;">Restricción Alimentaria</label>
         
-        <!-- ESTE ES EL CONTENEDOR 2x2 MÁGICO -->
+        <!-- ESTE ES EL CONTENEDOR 2x2 MÁGICO (Ahora más delgado) -->
         <div class="radio-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 15px;">
           <input type="radio" id="dieta-ninguna" name="restricciones" value="Ninguna" checked>
-          <label for="dieta-ninguna">Ninguna</label>
+          <label for="dieta-ninguna" style="padding: 8px 5px; min-height: auto;">Ninguna</label>
+          
           <input type="radio" id="dieta-celiaco" name="restricciones" value="Celiaco">
-          <label for="dieta-celiaco">Celíaco</label>
+          <label for="dieta-celiaco" style="padding: 8px 5px; min-height: auto;">Celíaco</label>
+          
           <input type="radio" id="dieta-vege" name="restricciones" value="Vegetariano">
-          <label for="dieta-vege">Vegetariano</label>
+          <label for="dieta-vege" style="padding: 8px 5px; min-height: auto;">Vegetariano</label>
+          
           <input type="radio" id="dieta-otra" name="restricciones" value="Otra">
-          <label for="dieta-otra">Otra</label>
+          <label for="dieta-otra" style="padding: 8px 5px; min-height: auto;">Otra</label>
         </div>
         
         <input type="text" id="dieta-otra-texto" placeholder="Por favor especifica..." style="display: none; width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 8px; font-family: 'Montserrat', sans-serif; box-sizing: border-box;">
