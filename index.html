@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invitación Josselyn & Jordán</title>
+<style>
+
+   /* --- TIPOGRAFÍAS PREMIUM Y ESTILOS GLOBALES --- */
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400;500&family=Pinyon+Script&display=swap');
+  
+
+  /* EL TEXTO DE INTRODUCCIÓN (Elegante) */
+.intro-text { 
+  font-family: 'Cormorant Garamond', serif; 
+  font-size: 1.4rem; 
+  line-height: 1.6; 
+  color: #5c5c5c; 
+  margin: 10px 0; 
+  font-style: italic; 
+}
+
+/* LOS NOMBRES EN MANUSCRITA (El toque Wow) */
+.title-cursive { 
+  font-family: 'Pinyon Script', cursive; 
+  font-size: 5.5rem; /* Ajusta este tamaño si lo ves muy grande para el óvalo */
+  color: #5c5c5c; 
+  margin: 0; 
+  line-height: 0.9; 
+}
+
+/* EL CONECTOR "y" */
+.and-connector { 
+  font-family: 'Cormorant Garamond', serif; 
+  font-size: 2.5rem; 
+  color: #5c5c5c; 
+  margin: 5px 0; 
+  font-style: italic; 
+}
+
+
+
+  /* LA CAJA BEIGE PREMIUM */
+  .seccion-fecha-encuadre {
+    position: relative;
+    background-color: #f7f5ef; /* Un beige muy suave, tipo papel crema */
+    border-radius: 20px; /* Bordes redondeados y amigables */
+    padding: 30px 15px; /* Mucho espacio interno para que el texto respire */
+    margin: 20px auto; /* Espacio por fuera para separarlo del resto */
+    max-width: 550px; /* Ancho ideal para celulares y pantallas */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Sombra súper elegante */
+  }
+
+  /* LAS HOJITAS (Esquinas) */
+  .hoja-decorativa {
+    position: absolute;
+    width: 140px; /* Tamaño de la hoja, lo podemos ajustar */
+    opacity: 0.9;
+    pointer-events: none; /* ¡Clave! Evita que las hojas bloqueen los clics del usuario */
+    z-index: 0; /* Capa del fondo */
+  }
+
+  /* Posición de la primera hoja */
+  .hoja-top-left {
+    top: -30px;
+    left: -30px;
+    transform: rotate(-15deg); /* Inclinación natural */
+  }
+
+  /* Posición de la segunda hoja */
+  .hoja-bottom-right {
+    bottom: -30px;
+    right: -30px;
+    transform: rotate(165deg); /* Volteada para la otra esquina */
+  }
+
+  /* Para que tu texto y botón estén por encima de las hojas */
+  .contenido-fecha {
+    position: relative;
+    z-index: 1; /* Capa de arriba */
+  }
+
+
+  /* --- TIPOGRAFÍAS PREMIUM Y ESTILOS GLOBALES --- */
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400;500&family=Pinyon+Script&display=swap');
+  
+  :root {
+    --sage-green: #9ba993; 
+    --text-dark: #3a4a3e;
+    --text-light: #5e6b61;
+    --bg-cream: #FCFAF6;
+    /* Sello cobrizo realista */
+    --wax-seal-light: #E8A87C;
+    --wax-seal-mid: #B87333;
+    --wax-seal-dark: #7A3B12;
+    --paper-texture: url('https://www.transparenttextures.com/patterns/white-paperboard.png');
+  }
+  
+  /* EFECTO PARALLAX RESTAURADO */
+  body { 
+    margin: 0; font-family: 'Montserrat', sans-serif; 
+    background-color: var(--bg-cream); 
+    background-image: var(--paper-texture);
+    background-attachment: fixed; /* Esto hace la magia del Parallax */
+    color: var(--text-dark); 
+    overflow-x: hidden; 
+  }
+  
+  h1, h2, h3, h4 { font-weight: 400; margin: 0; }
+
+  
+  
+
+  /* =========================================
+     2. LIENZO BLANCO FLOTANTE (MAIN CONTENT)
+     ========================================= */
+  #main-content { display: none; opacity: 0; transition: opacity 1.5s; padding: 40px 0; position: relative; }
+  
+  .invitation-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #ffffff; /* Lienzo Blanco */
+    box-shadow: 0 15px 50px rgba(0,0,0,0.08); /* Sombra elegante */
+    border-radius: 8px; 
+    overflow: hidden;
+    position: relative;
+  }
+
+  .section-container { padding: 0 40px; text-align: center; position: relative; z-index: 1; }
+  
+  .color-block-bottom { width: 100%; padding: 30px 20px; background-color: var(--sage-green); color: #fff; text-align: center; box-sizing: border-box; margin-top: 60px; }
+  .color-block-bottom p { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-style: italic; margin: 0; }
+
+  /* CLASES DE ANIMACIÓN (FADE-IN) */
+  .fade-in { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+  .fade-in.show { opacity: 1; transform: translateY(0); }
+
+/* =========================================
+     ENCABEZADO
+     ========================================= */
+  .header-frame { position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; padding-top: 20px;}
+
+ /* =========================================
+   1. ESTILOS PARA LA WEB Y TEXTURA DE FONDO
+   ========================================= */
+
+/* EL CONTENEDOR DE TEXTO (Versión Web) */
+.header-text-content { 
+  position: relative; 
+  z-index: 1; 
+  margin-top: 0; /* Lo dejamos en 0 para evitar conflictos */
+  
+  padding-top: 250px; /* <--- Ajusta ESTE número para bajar o subir el texto en la Web */
+  padding-bottom: 40px;
+  padding-left: 30px;
+  padding-right: 30px;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* EL TRUCO MAGICO: El texto empieza arriba, no al centro */
+  text-align: center;
+  min-height: 700px; /* La imagen se mantiene grande sin afectar el texto */
+}
+
+/* EL FONDO DE TEXTURA (Versión Web) */
+.fondo-textura-tarjeta {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  object-position: center; 
+  z-index: 0; 
+  opacity: 0.8; 
+  pointer-events: none; 
+}
+
+/* CONTROL DE ESPACIO ENTRE TEXTOS */
+.title-cursive {
+  margin-top: 10px; /* Espacio ARRIBA del nombre (separación con "nuestras familias") */
+  margin-bottom: 5px; /* Espacio ABAJO del nombre (separación con la letra "y") */
+  /* EL SALVAVIDAS: Agranda la caja invisible para que la "J" entre completa durante la animación */
+  padding: 15px 25px; 
+}
+
+.and-connector {
+  margin-top: 0px; 
+  margin-bottom: 5px; /* Espacio ABAJO de la "y" (separación con el segundo nombre) */
+}
+
+/* =========================================
+   2. ESTILOS SOLO PARA CELULAR (Ajuste Marco Dorado)
+   ========================================= */
+@media (max-width: 768px) {
+  
+  /* Volvemos a 'rem' con tamaños pequeños pero seguros para el celular */
+  .intro-text { font-size: 0.85rem; } 
+  .title-cursive { font-size: 2.2rem; } 
+  .title-cursive-small { font-size: 2.0rem; }
+  .and-connector { font-size: 1.1rem; }
+
+  .header-text-content { 
+    margin-top: 0; 
+    min-height: 480px; 
+    
+    justify-content: center; /* Volvemos a centrar para equilibrar el marco */
+    
+    /* Márgenes grandes para empujar el texto adentro del marco dorado */
+    padding-top: 60px; 
+    padding-bottom: 30px;
+    padding-left: 50px; /* Separación estricta de los lados */
+    padding-right: 50px; /* Separación estricta de los lados */
+  }
+
+  .fondo-textura-tarjeta {
+    left: 0;
+    width: 100%;
+    height: 110%;
+    object-fit: fill;
+    object-position: center; 
+  }
+}
+
+/* =========================================
+   FLECHA ANIMADA Y ESPACIO DE LA SECCIÓN
+   ========================================= */
+/* Damos más espacio arriba y abajo de la textura */
+#seccion-invitacion {
+  margin-top: 50px; 
+  margin-bottom: 70px;
+}
+
+/* Dibujamos la flecha elegante que rebota */
+.flecha-bajar {
+  width: 20px;
+  height: 20px;
+  margin: 30px auto; /* Espacio alrededor de la flecha */
+  border-right: 2px solid var(--text-dark); /* Usa el color de tu texto */
+  border-bottom: 2px solid var(--text-dark);
+  transform: rotate(45deg);
+  cursor: pointer;
+  animation: latidoFlecha 2s infinite; /* Hace que se mueva solita */
+}
+
+@keyframes latidoFlecha {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0) rotate(45deg); }
+  40% { transform: translateY(-10px) rotate(45deg); }
+  60% { transform: translateY(-5px) rotate(45deg); }
+}
+
+
+  .intro-text { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; line-height: 1.8; color: var(--text-dark); margin: 20px 0; font-style: italic; }
+  .title-cursive { font-family: 'Pinyon Script', cursive; font-size: 5.5rem; color: var(--text-dark); margin: 0; line-height: 1; }
+  .title-cursive-small { font-family: 'Pinyon Script', cursive; font-size: 3.5rem; color: var(--text-dark); margin: 0; }
+  .and-connector { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--text-dark); margin: 5px 0; font-style: italic; }
+
+  /* FECHA Y BOTONES */
+  /* =========================================
+     SEPARADOR ORNAMENTAL
+     ========================================= */
+  .separador-ornamental {
+    width: 80%; /* Evita que choque con los bordes de la pantalla */
+    max-width: 250px; /* Tamaño máximo para que se vea fino y no tosco */
+    margin: 0 auto 15px auto; /* Centrado automático y 15px de aire hacia abajo */
+    display: block;
+    opacity: 0.85; /* Un toque de transparencia para integrarlo con el fondo beige */
+  }
+
+  .date-highlight { 
+    margin: 10px auto 30px; /* Reduje el margen superior de 40px a 10px */
+    padding: 10px 0 25px 0; /* Reduje el padding superior de 25px a 10px */
+    border-bottom: 1px solid var(--sage-green); /* Mantenemos SOLO la línea de abajo */
+    max-width: 400px; 
+  }
+  .date-big { font-family: 'Cormorant Garamond', serif; font-size: 2rem; letter-spacing: 4px; color: var(--text-dark); margin: 0; text-transform: uppercase; }
+  .time-big { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; letter-spacing: 3px; color: var(--text-light); margin: 15px 0 0 0; text-transform: uppercase; }
+
+  .btn-solid { background-color: var(--text-dark); color: #fff; border: none; padding: 15px 35px; border-radius: 4px; font-family: 'Montserrat', sans-serif; letter-spacing: 3px; font-size: 0.8rem; cursor: pointer; text-transform: uppercase; transition: 0.3s; display: inline-block; text-decoration: none; margin-bottom: 20px;}
+  .btn-solid:hover { background-color: var(--sage-green); }
+
+  .countdown { display: flex; justify-content: center; gap: 20px; margin: 50px 0; }
+  .time-box { text-align: center; min-width: 60px; }
+  .time-box span { display: block; font-size: 2.8rem; font-family: 'Cormorant Garamond', serif; color: var(--text-dark); line-height: 1; }
+  .time-box small { font-size: 0.75rem; text-transform: uppercase; color: var(--text-light); letter-spacing: 2px; margin-top: 10px; display: block; }
+  .closing-text { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-style: italic; line-height: 1.6; color: var(--text-dark); margin: 40px 0; }
+  
+  .floral-separator { width: 100%; max-width: 700px; margin: 60px auto; display: block; opacity: 0.9; }
+
+  /* =========================================
+     POLAROIDS (REPARADAS Y RESPONSIVAS)
+     ========================================= */
+  .polaroid-row { display: flex; justify-content: center; gap: 20px; margin: 30px 0; flex-wrap: nowrap; }
+  .polaroid { background: #fff; padding: 10px 10px 25px 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.08); transform: rotate(-2deg); transition: 0.3s; flex-shrink: 1;}
+  .polaroid:nth-child(2) { transform: rotate(1deg); }
+  .polaroid:nth-child(3) { transform: rotate(-1deg); }
+  .polaroid img { width: 100%; max-width: 180px; height: auto; aspect-ratio: 1/1; object-fit: cover; }
+  .polaroid:hover { transform: rotate(0deg) scale(1.05); z-index: 10; }
+  .polaroid p { display: none; }
+
+  .historia-texto { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--text-light); line-height: 1.4; margin-bottom: 80px; }
+
+  /* =========================================
+     PROGRAMA CON FOTOS CIRCULARES (RESTAURADO)
+     ========================================= */
+  .timeline { position: relative; max-width: 450px; margin: 40px auto; padding: 20px 0; }
+  .timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background-color: var(--sage-green); transform: translateX(-50%); }
+  .time-item { position: relative; width: 100%; display: flex; align-items: center; margin-bottom: 50px; }
+  .time-item:nth-child(odd) { justify-content: flex-end; text-align: left; }
+  .time-item:nth-child(even) { justify-content: flex-start; text-align: right; }
+  .time-item::before { content: ''; position: absolute; left: 50%; width: 9px; height: 9px; background-color: var(--bg-cream); border: 1px solid var(--text-dark); border-radius: 50%; transform: translateX(-50%); z-index: 2; }
+  
+  .time-content { width: 45%; padding: 0 30px; box-sizing: border-box; display: flex; align-items: center; }
+  .time-item:nth-child(odd) .time-content { flex-direction: row-reverse; }
+  
+  /* Círculos Fotográficos para el Programa */
+  .story-photo { width: 65px; height: 65px; border-radius: 50%; object-fit: cover; border: 2px solid #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.1); flex-shrink: 0; }
+  
+  .time-text { flex: 1; }
+  .time-text h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; margin: 0; }
+  .time-text p { font-family: 'Montserrat', sans-serif; font-size: 0.7rem; letter-spacing: 2px; margin: 3px 0 0 0; color: var(--text-light); text-transform: uppercase;}
+
+  /* =========================================
+     FORMULARIOS, RSVP Y LIBRO DE VISITAS
+     ========================================= */
+  .form-box { background: #faf9f6; padding: 40px 30px; border-radius: 4px; box-shadow: 0 5px 20px rgba(0,0,0,0.03); margin-top: 30px; margin-bottom: 40px; border: 1px solid #eaeaea; }
+  input, select, textarea { width: 100%; padding: 15px; margin-bottom: 20px; border: none; border-bottom: 1px solid var(--sage-green); background: transparent; font-family: inherit; font-size: 0.95rem; box-sizing: border-box; outline: none; color: var(--text-dark);}
+  
+  /* Libro de Visitas */
+  .guestbook-board { max-height: 350px; overflow-y: auto; margin-top: 40px; padding-right: 10px; text-align: left; }
+  .guest-msg { background: #fff; padding: 20px; margin-bottom: 15px; border-left: 3px solid var(--sage-green); box-shadow: 0 2px 10px rgba(0,0,0,0.03); border-radius: 0 4px 4px 0;}
+  .guest-msg p { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; color: var(--text-dark); margin: 0 0 10px 0; line-height: 1.5; }
+  .guest-msg span { font-family: 'Montserrat', sans-serif; font-size: 0.7rem; font-weight: 600; color: var(--sage-green); text-transform: uppercase; letter-spacing: 1px; display: block; text-align: right; }
+
+  /* DETALLES */
+  details { text-align: left; padding: 20px 0; border-bottom: 1px solid #eee; cursor: pointer; }
+  summary { font-family: 'Montserrat', sans-serif; font-size: 0.95rem; letter-spacing: 1px; color: var(--text-dark); text-transform: uppercase; list-style: none; display: flex; justify-content: space-between;}
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: '+'; font-size: 1.2rem; color: var(--sage-green); }
+  details[open] summary::after { content: '-'; }
+  details p { font-size: 0.95rem; color: var(--text-light); line-height: 1.8; margin-top: 15px; }
+
+  /* ADAPTACIÓN MÓVIL Y EFECTO PARALLAX */
+  @media (max-width: 768px) { 
+    /* Títulos más pequeños y con menos interlineado */
+    .title-cursive { font-size: 3.5rem; line-height: 0.9; } 
+    .title-cursive-small { font-size: 2.8rem; line-height: 1; }
+    
+    .section-container { padding: 0 15px; } 
+    .invitation-wrapper { margin: 15px 10px; } 
+    
+    .polaroid-row { gap: 8px; flex-wrap: nowrap; }
+    .polaroid { padding: 5px 5px 15px 5px; }
+    .polaroid img { width: 80px; height: 80px; } 
+    
+    /* Centrar texto del sobre */
+    .tap-instruction { text-align: center; width: 80%; line-height: 1.4; box-sizing: border-box; }    
+ 
+    
+    /* Arreglo y compresión del programa para que quepa en la pantalla del celular */
+    .timeline { margin: 10px auto; padding: 10px 0; }
+    .timeline::before { left: 20px; }
+    .time-item { margin-bottom: 38px; } /* Reducimos drásticamente el espacio entre actividades */
+    .time-item::before { left: 20px; }
+    .time-content { width: 100%; padding-left: 45px; padding-right: 0; justify-content: flex-start; }
+    .time-item:nth-child(odd) .time-content { flex-direction: row; text-align: left; }
+    .time-item:nth-child(even) .time-content { flex-direction: row; text-align: left; }
+    
+    /* Achicamos las fotos y pegamos más el texto */
+    .story-photo { width: 50px; height: 50px; margin-right: 15px; } /* Tamaño de las fotos del programa y el espacio antes del texto */
+    .time-text h4 { font-size: 1.1rem; line-height: 1; } 
+    .time-text p { margin-top: 2px; line-height: 1; }
+  }
+
+  /* =========================================
+     1. PANTALLA INICIAL: SOBRE EMPATADO
+     ========================================= */
+  #envelope-screen {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: #EAEAE5; 
+    background-image: var(--paper-texture);
+    z-index: 9999;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    transition: opacity 1s ease-in-out;
+  }
+  
+  .envelope-container {
+    width: 90%; max-width: 450px;
+    cursor: pointer;
+  }
+
+  .env-img-start {
+    width: 100%; height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .tap-instruction {
+    margin-top: 20px; font-family: 'Montserrat', sans-serif; font-size: 0.8rem;
+    letter-spacing: 3px; text-transform: uppercase; color: var(--sage-green);
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; }
+  }
+
+  /* El sobre abierto al inicio de la invitación */
+  .header-envelope-open {
+    width: 85%;
+    max-width: 280px;
+    margin: 20px auto 10px;
+    display: block;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.08));
+  }
+
+  /* --- NUEVOS ESTILOS FASE 2 --- */
+  .env-pass-msg { margin-top: 15px; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; color: var(--text-dark); background: rgba(255,255,255,0.85); padding: 8px 20px; border-radius: 30px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; text-align: center; }
+  .social-buttons { display: flex; justify-content: center; gap: 15px; margin-top: 30px; margin-bottom: 30px; flex-wrap: wrap; }
+  .btn-outline { background: transparent; color: var(--sage-green); border: 1px solid var(--sage-green); padding: 12px 25px; border-radius: 30px; font-family: 'Montserrat', sans-serif; letter-spacing: 2px; font-size: 0.75rem; cursor: pointer; text-transform: uppercase; transition: 0.3s; text-decoration: none; font-weight: 500;}
+  .btn-outline:hover { background: var(--sage-green); color: #fff; }
+  /* Carrusel Libro Visitas */
+  .carousel-wrapper { position: relative; max-width: 600px; margin: 60px auto 20px; padding: 20px 40px; overflow: hidden; }
+  .carousel-track { display: flex; transition: transform 0.5s ease-in-out; }
+  .carousel-slide { min-width: 100%; box-sizing: border-box; padding: 0 10px; }
+  .guest-msg-card { background: #fff; padding: 40px 30px; border-top: 3px solid var(--sage-green); box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-radius: 8px; text-align: center; position: relative; z-index: 2;}
+  .guest-msg-card p { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-style: italic; color: var(--text-dark); margin: 0 0 20px 0; line-height: 1.5; }
+  .guest-msg-card span { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 600; color: var(--sage-green); text-transform: uppercase; letter-spacing: 2px; }
+  .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: #fff; border: 1px solid #eee; box-shadow: 0 2px 10px rgba(0,0,0,0.05); width: 40px; height: 40px; border-radius: 50%; font-size: 1.2rem; color: var(--sage-green); cursor: pointer; z-index: 10; display: flex; justify-content: center; align-items: center; transition: 0.3s;}
+  .carousel-btn:hover { background: var(--sage-green); color: #fff;}
+  .prev-btn { left: 0; } .next-btn { right: 0; }
+  /* Hojas decorativas absolutas */
+  .deco-leaf { position: absolute; z-index: 1; opacity: 0.85; pointer-events: none; }
+  .leaf-top-left { width: 140px; top: -50px; left: -30px; transform: rotate(-15deg); }
+  .leaf-bottom-right { width: 120px; bottom: -40px; right: -20px; transform: rotate(45deg); }
+  
+  /* Ajuste de interlineado para celular */
+  p { line-height: 1.4 !important; }
+
+  /* Estilos para Cajas Tickeables (Radio Buttons) - Versión Paralela */
+.radio-group { 
+  display: flex; 
+  gap: 10px; /* Espacio entre cajas */
+  margin-bottom: 20px; 
+  flex-wrap: nowrap; /* Fuerza a que se queden en la misma línea */
+  justify-content: center; 
+  width: 100%;
+}
+
+.radio-group input[type="radio"] { display: none; }
+
+.radio-group label {
+  flex: 1; /* Esto hace que ambos botones tengan el mismo ancho */
+  text-align: center;
+  padding: 12px 5px; 
+  border: 1px solid var(--sage-green); 
+  border-radius: 8px;
+  cursor: pointer; 
+  transition: all 0.3s; 
+  color: var(--sage-green); 
+  font-family: 'Montserrat', sans-serif; 
+  font-size: 0.85rem; 
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 45px; /* Altura mínima para que se vean uniformes */
+}
+
+.radio-group input[type="radio"]:checked + label {
+  background-color: var(--sage-green); 
+  color: #fff; 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+  /* Estilos del Carrusel y Transición Sutil */
+  .carousel-container { width: 100%; position: relative; }
+  .carousel-track { display: flex; transition: transform 1.2s cubic-bezier(0.25, 0.1, 0.25, 1); } /* Transición muy lenta y elegante */
+  .carousel-slide { min-width: 100%; box-sizing: border-box; padding: 0 10px; text-align: center; }
+  
+  /* Diseño de Botones de Navegación */
+  .carousel-btn { 
+    position: absolute; top: 50%; transform: translateY(-50%); 
+    background: none; border: none; font-size: 1.5rem; 
+    color: var(--sage-green); cursor: pointer; z-index: 10; 
+    padding: 10px; transition: color 0.3s; opacity: 0.7;
+    width: 40px; display: flex; justify-content: center; align-items: center;
+  }
+  .carousel-btn:hover { color: var(--text-dark); opacity: 1; }
+  .prev-btn { left: 0; }
+  .next-btn { right: 0; }
+
+  /* =========================================
+       BODEGÓN DINÁMICO MAESTRO (6 ELEMENTOS QUE CAEN)
+       ========================================= */
+    .mesa-recuerdos {
+      position: relative;
+      width: 100%;
+      max-width: 450px; /* Forzamos el ancho de un celular grande */
+      margin: 10px auto 60px auto; /* Centramos la caja en pantallas grandes */
+      min-height: 620px; 
+      display: flex;
+      justify-content: center;
+    }
+
+    .item-recuerdo {
+      position: absolute;
+      opacity: 0;
+      will-change: transform, opacity;
+      /* Animación más suave y natural: caerElemento */
+      animation: caerElemento 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes caerElemento {
+      0% { 
+        opacity: 0; 
+        transform: translateY(-100px) scale(1.1) rotate(0deg); 
+      }
+      100% { 
+        opacity: 1; 
+        transform: translateY(0) scale(1) rotate(var(--giro)); 
+      }
+    }
+
+    /* 1. EL SOBRE ABIERTO (Base, cae primero) */
+    .recuerdo-sobre { top: 0; z-index: 5; --giro: 0deg; animation-delay: 0.3s; }
+    
+    /* 2. DECORACIÓN HOJA (Izquierda) */
+    .recuerdo-decoracion-extra { 
+      top: 10px; left: 48%; z-index: 10; --giro: -12deg; 
+      width: 100px; padding: 12px; background: white; 
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 4px;
+      animation-delay: 2.0s; 
+    }
+
+    /* 3. SELLO DE LACRE (Derecha, cerca del sobre) */
+    .recuerdo-sello { 
+      top: 240px; right: 6%; z-index: 15; --giro: 10deg; 
+      width: 100px; opacity: 0; /* Imagen sin fondo PNG */
+      animation-delay: 1.0s; 
+    }
+
+    /* 4. TARJETITA PEQUEÑA */
+    .recuerdo-tarjeta-pequena { 
+      top: 380px; left: 3%; z-index: 12; --giro: -5deg; 
+      width: 180px; padding: 10px; background: white; 
+      border: 1px solid var(--sage-green); border-radius: 4px; 
+      text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      animation-delay: 1.5s; 
+    }
+
+    /* 5. ANILLOS DE BODA (Casi al final, centro inferior) */
+    .recuerdo-anillos { 
+      top: 590px; left: 65%; transform: translateX(-50%); z-index: 20; --giro: 15deg; 
+      width: 100px; opacity: 0; /* Imagen sin fondo PNG */
+      animation-delay: 2.2s; 
+    }
+
+    /* 6. TARJETITA: POLAROID VIVA (VIDEO/GIF - Cae al final) */
+    .recuerdo-video { 
+      top: 400px; right: 5%; z-index: 10; --giro: 10deg; 
+      width: 155px; padding: 10px 10px 25px 10px; background: white; 
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      animation-delay: 2.5s; 
+    }
+
+/* =========================================
+   ANIMACIÓN DE TEXTOS (EFECTO APARICIÓN CON BRILLO)
+   ========================================= */
+/* Estado inicial: invisible, brillante y ligeramente desenfocado */
+.texto-aparecer {
+  opacity: 0;
+  filter: blur(6px) brightness(2); 
+  transition: opacity 1.5s ease-out, filter 1.5s ease-out;
+}
+
+/* Estado final: 100% visible, nítido y con su color normal */
+.texto-aparecer.visible {
+  opacity: 1;
+  filter: blur(0) brightness(1);
+}
+
+/* Retrasos para crear el efecto cascada (uno después de otro) */
+.delay-1 { transition-delay: 0.2s; } /* Intro */
+.delay-2 { transition-delay: 0.7s; } /* Josselyn */
+.delay-3 { transition-delay: 1.2s; } /* la "y" */
+.delay-4 { transition-delay: 1.7s; } /* Jordán */
+.delay-5 { transition-delay: 2.2s; } /* Despedida */
+
+/* =========================================
+   EFECTO ESCRITURA A MANO (Para Nuestra Historia)
+   ========================================= */
+.escribir-mano {
+  display: inline-block;
+  white-space: nowrap; /* Obliga al texto a estar en una sola línea */
+  
+  /* Escondemos todo el texto "tapándolo" desde la derecha */
+  -webkit-clip-path: inset(0 100% 0 0);
+  clip-path: inset(0 100% 0 0);
+  
+  /* La velocidad de la escritura (2.5 segundos) */
+  transition: -webkit-clip-path 2.5s ease-in-out, clip-path 2.5s ease-in-out;
+}
+
+.escribir-mano.visible {
+  /* Destapamos todo el texto (le pongo -10% para que no corte la colita de la última letra) */
+  -webkit-clip-path: inset(0 -10% 0 0);
+  clip-path: inset(0 -10% 0 0);
+}
+
+/* =========================================
+   SECCIÓN CÓMO LLEGAR (Acuarela y Caja Cristal)
+   ========================================= */
+
+/* 1. El fondo que ahora sí toca los bordes de la tarjeta */
+.seccion-fondo-acuarela {
+  /* Estas tres líneas obligan a la imagen a saltarse el margen de 40px */
+  width: calc(100% + 80px) !important; 
+  margin-left: -40px !important;      
+  margin-right: -40px !important;     
+  
+  /* Tu imagen de fondo desde Drive */
+  background: url('https://drive.google.com/thumbnail?id=1amJzxFUNTN7A1LfJzrc6LV3ss3HL7xn_&sz=w1000') no-repeat center center;
+  background-size: cover;
+  
+  /* Espacio arriba y abajo de la caja de cristal */
+  padding: 80px 20px; 
+  box-sizing: border-box; 
+  
+  /* Separación con las secciones de arriba y abajo */
+  margin-top: 40px; 
+  margin-bottom: 40px;
+}
+
+/* 2. La cajita elegante que flota en el medio */
+.caja-cristal-info {
+  background-color: rgba(255, 255, 255, 0.88); /* Blanco al 88% (semi-transparente) */
+  max-width: 450px;
+  margin: 0 auto; /* Centra la caja en la pantalla */
+  padding: 40px 20px;
+  border-radius: 15px; /* Bordes redondeados y suaves */
+  text-align: center; /* ¡ESTO CENTRA LA DIRECCIÓN Y LOS TIPS AUTOMÁTICAMENTE! */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Sombra muy fina */
+  border: 1px solid rgba(255, 255, 255, 0.5); /* Borde sutil tipo vidrio */
+}
+
+/* 3. Estilos para los textos de adentro */
+.texto-direccion {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.texto-tip-ruta {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-style: italic; /* Letra cursiva tipo anotación */
+  color: #555;
+  margin-bottom: 25px;
+  line-height: 1.4;
+}
+
+/* =========================================
+   SECCIÓN ASISTENCIA PREMIUM (BLOQUE SÓLIDO)
+   ========================================= */
+
+/* 1. El bloque verde que rompe los márgenes */
+.seccion-asistencia-solida {
+  background-color: var(--sage-green); /* Tu color insignia */
+  width: calc(100% + 80px) !important; /* Expansión para tocar bordes */
+  margin-left: -40px !important;
+  padding: 40px 40px;
+  box-sizing: border-box;
+  margin-top: 20px;
+  position: relative;
+}
+
+/* 2. La caja del formulario (ahora tipo papel crema) */
+.form-box-asistencia {
+  background-color: #fcfbf8; /* Un crema muy sutil */
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+  max-width: 550px;
+  margin: 30px auto 0 auto;
+  position: relative;
+  z-index: 5;
+}
+
+/* Ajuste para que los textos sobre el verde sean legibles */
+.texto-blanco-asistencia {
+  color: #ffffff !important;
+}
+
+/* =========================================
+   SECCIÓN LIBRO DE MENSAJES (TARJETA VINTAGE)
+   ========================================= */
+
+.contenedor-tarjeta-mensajes {
+  /* Tu nueva imagen cuadrada */
+  background: url('https://drive.google.com/thumbnail?id=1JxGiC9uol1bu71h23SvtLY8btVm7JJd4&sz=w1000') no-repeat center center;
+  background-size: contain;
+
+  /* EXPANSIÓN A LOS BORDES */
+  width: calc(100% + 80px) !important;
+  margin-left: -40px !important;
+  margin-right: -40px !important;
+  
+  /* PROPORCIÓN CUADRADA: Ancho y alto iguales */
+  aspect-ratio: 1 / 1; 
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+  /* AUMENTAMOS EL PADDING: Al ser un cuadrado, el texto necesita 
+     más espacio alrededor para no pisar los bordes decorados. */
+  padding: 20%; 
+  box-sizing: border-box;
+  text-align: center;
+  
+  min-height: auto !important; 
+}
+
+.titulo-libro-tarjeta {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  color: #5d6d5e; /* Un tono que armoniza con el verde sage */
+  margin-bottom: 10px;
+}
+
+</style>
+</head>
+<body>
+
+  <div id="envelope-screen">
+    <div class="envelope-container" onclick="abrirSobreRealista()" style="position: relative; display: inline-block;">
+      <img src="https://drive.google.com/thumbnail?id=1LdTbMokHCVe4xrucCMHNsIS6xcbGMtUy&sz=w800" 
+           id="env-closed" class="env-img-start" alt="Sobre Cerrado" 
+           style="transition: opacity 0.8s ease;">
+           
+      </div>
+    <div id="envelope-pass-message" class="env-pass-msg" style="display: none; margin-top: 20px;"></div>
+    <div class="tap-instruction">Toca el sobre para abrir</div>
+  </div>
+
+  <audio id="bg-music" loop preload="auto">
+        <source src="https://filebin.net/obobdfjgvwxh9osh/Kashia%20-%20Pure%20Dream.mp3" type="audio/mpeg">
+      </audio>
+
+  <div id="main-content" style="display: none; opacity: 0;">
+    <div class="invitation-wrapper">
+
+      <div class="mesa-recuerdos">
+
+        <div class="item-recuerdo recuerdo-sobre">
+          <img src="https://drive.google.com/thumbnail?id=1Fnjaql8wDvF4-80K5aWLhrcfqAQTouOS&sz=w800" 
+               style="width: 100%; max-width: 420px;" alt="Sobre Abierto">
+        </div>
+
+        <div class="item-recuerdo recuerdo-decoracion-extra" style="background: none; border: none; box-shadow: none; padding: 0;">
+   <img src="https://drive.google.com/thumbnail?id=1Ltw9r4x4OtZPMV0DSf8SDL_EsYY_ttRD&sz=w400" 
+        style="width: 100%; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.15));" alt="Decoración">
+</div>
+
+        <div class="item-recuerdo recuerdo-sello">
+           <img src="https://drive.google.com/thumbnail?id=1qeAqhZ9TLlzHfbbSriLHi_WPhepX8WMH&sz=w400" 
+                style="width: 100%; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));" alt="Sello Lacre">
+        </div>
+
+        <div class="item-recuerdo recuerdo-tarjeta-pequena" style="background: none; border: none; box-shadow: none; padding: 0;">
+           <img src="https://drive.google.com/thumbnail?id=11EIRPiEPQzdimnAun9oFIFjWqq-A07rG&sz=w500" 
+                style="width: 100%; filter: drop-shadow(0 8px 15px rgba(0,0,0,0.1));" alt="Tarjeta Invitación">
+        </div>
+
+        <div class="item-recuerdo recuerdo-anillos">
+           <img src="https://drive.google.com/thumbnail?id=1_yJ39Tq7G_cR321UdZPVsYRIZiEg-Pdi&sz=w400" 
+                style="width: 100%; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));" alt="Anillos">
+        </div>
+
+        <div class="item-recuerdo recuerdo-video">
+          <div style="width: 100%; height: 200px; background-color: #f7f7f7; border-radius: 2px; overflow: hidden; display:flex; align-items:center; justify-content:center;">
+             
+             <img src="https://i.postimg.cc/8c7jkS0F/gif.gif" 
+                  style="width: 100%; height: 100%; object-fit: cover; filter: saturate(0.15) contrast(0.9) brightness(0.95) sepia(0.1);" alt="Video Save the Date">
+
+          </div>
+        </div>
+
+      </div>
+      
+      <!-- LA NUEVA FLECHA BOTÓN -->
+      <div class="flecha-bajar" onclick="centrarInvitacion()"></div>
+
+      <div class="section-container">
+        
+        <!-- Le agregamos el id="seccion-invitacion" a esta línea -->
+        <div id="seccion-invitacion" class="header-frame fade-in">
+          <img src="https://drive.google.com/thumbnail?id=1YQL4yLFZe7KykhgZHtF_cWgaDS_Xipm1&sz=w2000" class="fondo-textura-tarjeta" alt="Hojas Acuarela">
+          
+
+          <div class="header-text-content"> 
+
+  <p class="intro-text texto-aparecer">Con gran alegría,<br>y junto a nuestras familias,</p>
+  <h1 class="title-cursive texto-aparecer">Josselyn</h1>
+  <p class="and-connector texto-aparecer">y</p>
+  <h1 class="title-cursive texto-aparecer">Jordán</h1>
+  <p class="intro-text texto-aparecer" style="margin-top: 20px;">te invitamos a acompañarnos<br>en la celebración de nuestro matrimonio</p>
+  
+</div>
+        </div>
+
+        <div class="seccion-fecha-encuadre">  
+  <div class="contenido-fecha">
+<img src="https://drive.google.com/thumbnail?id=1DhQ485fXFOculEhqY7tNzKB6AjbjdGBN&sz=w800" alt="Separador ornamental" class="separador-ornamental">
+    <div class="date-highlight fade-in">
+      <p class="date-big">Sábado 03 de Octubre</p>
+      <p class="date-big" style="font-size: 1.5rem; margin-top: 5px;">2026</p>
+      <p class="time-big">a las 18:00 hrs</p>
+    </div>
+
+    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%F0%9F%92%8D+Matrimonio+Josselyn+y+Jord%C3%A1n&dates=20261003T210000Z/20261004T050000Z&details=Acompa%C3%B1anos+a+celebrar+nuestro+gran+d%C3%ADa.&location=Casona+Fundo+el+Rosario,+Mar%C3%ADa+Pinto" target="_blank" class="btn-solid fade-in" style="margin-bottom: 25px;">Añadir a mi Calendario</a>
+
+    <!-- NUEVO TÍTULO "FALTAN..." CON FUENTE ELEGANTE (Cormorant) -->
+    <h2 class="fade-in" style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 2rem; font-weight: normal; color: var(--text-dark); margin-top: 20px; margin-bottom: 0;">Faltan...</h2>
+
+    <!-- CONTADOR CON EL ESPACIO ARREGLADO -->
+    <div class="countdown fade-in" id="countdown" style="margin-top: 15px; margin-bottom: 25px;">
+      <div class="time-box"><span id="days">00</span><small>Días</small></div>
+      <div class="time-box"><span id="hours">00</span><small>Hrs</small></div>
+      <div class="time-box"><span id="minutes">00</span><small>Min</small></div>
+      <div class="time-box"><span id="seconds">00</span><small>Seg</small></div>
+    </div>
+
+    <p class="closing-text fade-in" style="margin-bottom: 30px; padding: 0 15px; text-align: center;">
+  Luego compartiremos una noche de cena, baile y sorpresas<br>
+  <strong>hasta las 02:00 hrs.</strong>
+</p>
+  </div>
+</div>
+
+      <div class="fade-in" style="width: 100%; max-width: 800px; margin: 60px auto; text-align: center;">
+        <img src="https://drive.google.com/thumbnail?id=1lbZ0CY1CV3Fv5M9O1TWLnG5irGhAh2Qm&sz=w1000" class="floral-separator" alt="Marco Hojas">
+      </div>
+
+      <div class="section-container">
+        
+        <!-- CAJA INVISIBLE PARA CONTROLAR LOS ESPACIOS -->
+<div style="margin-top: -40px; margin-bottom: 10px; text-align: center;">
+  
+  <!-- EL TEXTO ANIMADO (sin márgenes, solo hace su magia) -->
+  <h2 class="title-cursive-small escribir-mano" style="margin: 0;">Nuestra Historia</h2>
+
+</div>
+        
+        <div class="polaroid-row fade-in">
+          <div class="polaroid"><img src="https://drive.google.com/thumbnail?id=1hiyKGWGFsxylrRrCfWrjXg80fwBDzipa&sz=w600" alt="Foto 1"></div>
+          <div class="polaroid"><img src="https://drive.google.com/thumbnail?id=1-ug9d7bVDn8xRhd1oGiEkwzdMl-ZYNNS&sz=w600" alt="Foto 2"></div>
+          <div class="polaroid"><img src="https://drive.google.com/thumbnail?id=1nHY-TiHU5bo9knGZWpPQhpLRUcHNo0my&sz=w600" alt="Foto 3"></div>
+        </div>
+
+        <p class="historia-texto fade-in">
+          Todo comenzó con una hermosa amistad, sin imaginar lo que el destino nos tenía preparado. Un día comprendimos al instante que esto era lo que siempre habíamos estado buscando y soñando. Hoy, estamos listos para pasar el resto de nuestras vidas juntos.
+        </p>
+
+        <div class="fade-in" style="position: relative; background-color: #f4f5f1; background-image: url('https://drive.google.com/thumbnail?id=1GwzMtdDSGQtiajzR57GaQrX_Srp8Dl1w&sz=w800'); background-size: cover; background-position: center; border: 1px solid var(--sage-green); border-radius: 20px; padding: 50px 10px 10px 10px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); margin-bottom: 50px; overflow: hidden;">
+          
+          <h2 class="title-cursive-small fade-in" style="margin-bottom: 20px;">Programa</h2>
+          
+          <div class="timeline" style="margin-top: 0;">
+            <div class="time-item fade-in"><div class="time-content">
+              <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=150&auto=format&fit=crop" class="story-photo" alt="Recepción">
+              <div class="time-text"><h4>17:30 hrs</h4><p>Bienvenida</p></div>
+            </div></div>
+            
+            <div class="time-item fade-in"><div class="time-content">
+              <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=150&auto=format&fit=crop" class="story-photo" alt="Ceremonia">
+              <div class="time-text"><h4>18:00 hrs</h4><p>Ceremonia</p></div>
+            </div></div>
+            
+            <div class="time-item fade-in"><div class="time-content">
+              <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=150&auto=format&fit=crop" class="story-photo" alt="Cóctel">
+              <div class="time-text"><h4>19:00 hrs</h4><p>Cóctel y Fotos</p></div>
+            </div></div>
+
+            <div class="time-item fade-in"><div class="time-content">
+              <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=150&auto=format&fit=crop" class="story-photo" alt="Cena">
+              <div class="time-text"><h4>20:30hrs</h4><p>Cena y Brindis</p></div>
+            </div></div>
+
+            <div class="time-item fade-in"><div class="time-content">
+              <img src="https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=150&auto=format&fit=crop" class="story-photo" alt="Fiesta">
+              <div class="time-text"><h4>22:00 hrs</h4><p>Fiesta y Bar</p></div>
+            </div></div>
+          </div>
+        </div>
+
+        <!-- INICIO SECCIÓN ASISTENCIA SOLIDA -->
+<div class="seccion-asistencia-solida">
+  
+  <!-- MARCO CON TEXTO AL MEDIO -->
+<div class="fade-in" style="
+    background: url('https://drive.google.com/thumbnail?id=1M6Cjvrvo18uQEPnJlJz6mLMKrRvw9riF&sz=w800') no-repeat center center;
+    background-size: contain;
+    width: 100%;
+    min-height: 300px; /* Controla qué tan grande se ve el marco */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+">
+    <h2 class="title-cursive-small texto-blanco-asistencia" style="margin: 0; padding: 0 10px; text-align: center; white-space: nowrap;font-size: 2.3rem">
+    Confirma tu Asistencia
+</h2>
+</div>
+
+  <p class="fade-in texto-blanco-asistencia" style="font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-top: 15px; text-align: center;"><strong>Antes del 30 de junio</strong></p>
+  
+  <p id="mensaje-pase" class="fade-in" style="font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: #f4f4f4; font-style: italic; margin-top: 10px; text-align: center;"></p>
+
+  <!-- Caja Crema del Formulario -->
+  <div class="form-box-asistencia fade-in">
+    <form id="rsvp-form" style="text-align: left;">
+      
+      <label style="font-family: 'Montserrat', sans-serif; font-size: 0.85rem; color: var(--text-dark); font-weight:bold;">Nombre y Apellido *</label>
+      <input type="text" id="guest-name" name="nombre" required style="width: 100%; padding: 10px; margin-top: 5px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 8px; font-family: 'Montserrat', sans-serif; box-sizing: border-box;">
+
+      <label style="font-family: 'Montserrat', sans-serif; font-size: 0.85rem; color: var(--text-dark); font-weight:bold;">Correo Electrónico *</label>
+      <input type="email" name="correo" required style="width: 100%; padding: 10px; margin-top: 5px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 8px; font-family: 'Montserrat', sans-serif; box-sizing: border-box;">
+
+      <label style="font-family: 'Montserrat', sans-serif; font-size: 0.85rem; color: var(--text-dark); display: block; text-align: center; margin-bottom: 15px; font-weight:bold;">¿Asistirás? *</label>
+
+<div class="radio-group">
+  <input type="radio" id="asiste-si" name="asistencia" value="Sí, allí estaré" required>
+  <label for="asiste-si">¡Sí, allí estaré!</label>
+  
+  <input type="radio" id="asiste-no" name="asistencia" value="No podré asistir" required>
+  <label for="asiste-no">No podré asistir</label>
+</div>
+
+      <div id="mensaje-no" style="display: none; text-align: center; margin-bottom: 20px;">
+        <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--sage-green); font-style: italic;">Lamentamos mucho que no puedas acompañarnos en este día tan especial. Favor haz clic en "Enviar Respuesta"</p>
+      </div>
+
+      <div id="campos-extra" style="display: none;">
+        <label style="font-family: 'Montserrat', sans-serif; font-size: 0.85rem; color: var(--text-dark); font-weight:bold;">Nombre de tu Acompañante (Opcional)</label>
+        <input type="text" name="acompanante" style="width: 100%; padding: 10px; margin-top: 5px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 8px; font-family: 'Montserrat', sans-serif; box-sizing: border-box;">
+
+        <label style="font-family: 'Montserrat', sans-serif; font-size: 0.85rem; color: var(--text-dark); display: block; text-align: center; margin-bottom: 10px; font-weight:bold;">Restricción Alimentaria</label>
+        <div class="radio-group">
+          <input type="radio" id="dieta-ninguna" name="restricciones" value="Ninguna" checked>
+          <label for="dieta-ninguna">Ninguna</label>
+          <input type="radio" id="dieta-celiaco" name="restricciones" value="Celiaco">
+          <label for="dieta-celiaco">Celíaco</label>
+          <input type="radio" id="dieta-vege" name="restricciones" value="Vegetariano">
+          <label for="dieta-vege">Vegetariano</label>
+          <input type="radio" id="dieta-otra" name="restricciones" value="Otra">
+          <label for="dieta-otra">Otra</label>
+        </div>
+        <input type="text" id="dieta-otra-texto" placeholder="Por favor especifica..." style="display: none; width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 8px; font-family: 'Montserrat', sans-serif; box-sizing: border-box;">
+
+        <label style="font-family: 'Montserrat', sans-serif; font-size: 0.85rem; color: var(--text-dark); font-weight:bold;">Déjanos un mensaje</label>
+        <textarea id="guest-message" name="mensaje" rows="2" style="width: 100%; padding: 10px; margin-top: 5px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 8px; font-family: 'Montserrat', sans-serif; box-sizing: border-box;"></textarea>
+      </div>
+
+      <button type="button" class="btn-solid" id="submit-btn" onclick="enviarFormularioYMensaje()" style="width: 100%;">Enviar Respuesta</button>
+    </form>
+    <div id="form-response" style="display: none; color: var(--sage-green); font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-style: italic; margin-top: 20px;">¡Gracias! Hemos recibido tu respuesta 🤍</div>
+  </div>
+
+</div>
+<!-- FIN SECCIÓN ASISTENCIA SOLIDA -->
+
+          <div id="seccion-faq" class="fade-in" style="margin-top: 60px; margin-bottom: 30px; text-align: left; padding: 0 10px;">
+          <h2 class="title-cursive-small" style="text-align: center; color: var(--sage-green); margin-bottom: 25px;">Detalles Importantes</h2>
+          
+          <details style="margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+            <summary style="font-family: 'Montserrat', sans-serif; color: var(--text-dark); font-size: 0.95rem; font-weight: bold; cursor: pointer; outline: none;">¿Cuál es el código de vestimenta?</summary>
+            <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; margin-top: 10px; color: #555;">Cóctel (semiformal de tarde-noche). Gran parte del evento será sobre césped, por lo que sugerimos evitar tacos delgados. <a href="https://pin.it/58TerVb3B" target="_blank" style="color: var(--sage-green); font-weight: bold; text-decoration: underline;">Si necesitas inspiración, mira nuestro tablero Pinterest aquí</a>.</p>
+          </details>
+
+          <details style="margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+            <summary style="font-family: 'Montserrat', sans-serif; color: var(--text-dark); font-size: 0.95rem; font-weight: bold; cursor: pointer; outline: none;">¿Puedo llevar niños?</summary>
+            <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; margin-top: 10px; color: #555;">Para esta ocasión, hemos decidido que sea un evento exclusivo para adultos. Agradecemos su comprensión.</p>
+          </details>
+
+          <details style="margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+            <summary style="font-family: 'Montserrat', sans-serif; color: var(--text-dark); font-size: 0.95rem; font-weight: bold; cursor: pointer; outline: none;">¿Hay estacionamiento en el lugar?</summary>
+            <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; margin-top: 10px; color: #555;">Sí, hay estacionamiento privado y seguro para nuestros invitados.</p>
+          </details>
+
+          <details style="margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+            <summary style="font-family: 'Montserrat', sans-serif; color: var(--text-dark); font-size: 0.95rem; font-weight: bold; cursor: pointer; outline: none;">¿Cómo estará el clima?</summary>
+            <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; margin-top: 10px; color: #555;">El día en María Pinto suele ser cálido (21°C aprox.), sin embargo <strong>la temperatura baja considerablemente al atardecer</strong>. Dado que toda nuestra celebración será al aire libre, sugerimos traer un abrigo o chaqueta.</p>
+          </details>
+        </div>
+        
+        <div class="seccion-fondo-acuarela">
+  <div class="caja-cristal-info fade-in">
+    
+    <h2 class="title-cursive-small" style="margin-top: 0; margin-bottom: 25px;">Cómo Llegar</h2>
+    
+    <p class="texto-direccion">
+      <strong>Dirección:</strong><br>
+      <a href="https://www.google.com/maps/place/Casona+Fundo+El+Rosario/@-33.5123312,-71.1498943,17z/data=!3m1!4b1!4m6!3m5!1s0x9662f77000341cdf:0x10857c3afd0836f6!8m2!3d-33.5123312!4d-71.1473194!16s%2Fg%2F11m6c58xj8?hl=es-419&entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D" target="_blank" style="color: var(--sage-green); font-weight: 600; text-decoration: underline;">
+        Fundo El Rosario, María Pinto,<br>Región Metropolitana.
+      </a>
+    </p>
+
+    <p class="texto-tip-ruta" style="font-size: 1.15rem;">
+      <strong>Tips de ruta:</strong><br>
+      Desde Santiago toma Costanera Norte, luego Ruta 68 en dirección a la costa. Pasando el Túnel Lo Prado, toma la salida hacia María Pinto. Al llegar al disco Pare de la salida, dobla a la izquierda (¡atentos ahí para no pasarse!). Luego de eso, solo sigue las indicaciones del GPS, que el camino es sencillo.
+    </p>
+
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3326.578911790216!2d-71.14989432514555!3d-33.51233117336508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662f77000341cdf%3A0x10857c3afd0836f6!2sCasona%20Fundo%20El%20Rosario!5e0!3m2!1ses-419!2scl!4v1776738898798!5m2!1ses-419!2scl" width="100%" height="180" style="border:0; margin-top: 15px; border-radius: 12px; filter: grayscale(10%); box-shadow: 0 5px 15px rgba(0,0,0,0.05);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+  </div>
+</div>
+
+        <div id="seccion-regalos" class="fade-in" style="margin-top: 60px; margin-bottom: 20px;">
+          <div style="background-color: #f4f5f1; border: 1px solid var(--sage-green); border-radius: 20px; padding: 45px 30px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); position: relative; z-index: 5; margin: 0 15px; text-align: center;">
+            
+            <h2 class="title-cursive-small" style="color: var(--sage-green); margin-bottom: 15px;">Mesa de Regalos</h2>
+            
+            <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; line-height: 1.6; color: var(--text-dark); margin-bottom: 30px;">
+              El mejor regalo es tu compañía. Sin embargo, si deseas tener un detalle con nosotros, puedes visitar nuestra lista de novios.
+            </p>
+            
+            <a href="URL_DE_TU_LISTA" class="btn-solid" target="_blank" style="margin: 0; background-color: var(--sage-green); display: inline-block; text-decoration: none;">Ver Lista de Novios</a>
+          </div>
+        </div>
+
+          </div>
+
+<!-- SECCIÓN LIBRO DE MENSAJES -->
+<div id="seccion-libro" class="fade-in" style="text-align: center; margin-top: 60px;">
+  
+  <!-- El título ahora vive ARRIBA y fuera de la tarjeta -->
+  <h2 class="title-cursive-small" style="color: var(--sage-green); margin-bottom: 10px;">Libro de Mensajes</h2>
+
+  <!-- La Tarjeta expandida que solo contiene el carrusel -->
+  <div class="contenedor-tarjeta-mensajes">
+    <div class="carousel-container" style="position: relative; padding: 0 40px; margin: 0 auto; max-width: 420px; width: 100%; box-sizing: border-box;">
+      
+      <button class="carousel-btn prev-btn" onclick="moverCarrusel(-1)" style="left: -15px;">❮</button>
+      
+      <div style="overflow: hidden;"> 
+        <div class="carousel-track" id="guestbook-track" style="display: flex; align-items: center; min-height: 80px;">
+          <!-- Aquí se cargarán los mensajes de tus invitados -->
+        </div>
+      </div>
+      
+      <button class="carousel-btn next-btn" onclick="moverCarrusel(1)" style="right: -15px;">❯</button>
+      
+    </div>
+  </div>
+
+</div>          
+
+        <div class="fade-in" style="margin-top: 40px; margin-bottom: 20px; text-align: center;">
+          <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; color: var(--text-dark); margin-bottom: 15px;">Y para ponernos a tono... te dejamos nuestra playlist!</p>
+          <a href="https://open.spotify.com/playlist/6vDEtgHBsrl4UnnyA0mCS6?si=nQg7TwYzTmW3CGtdr_0mKA&pi=u1MvHLSLQKS5K" target="_blank" class="btn-outline" style="display: inline-block; margin-bottom: 50px;">🎵 Playlist Oficial</a>
+          
+          <br>
+          <button onclick="closeEnvelope()" class="btn-outline" style="font-size: 0.65rem; opacity: 0.6; border-color: #ccc; color: #777;">Volver a cerrar el sobre</button>
+        </div>
+
+      </div>
+
+      <div class="color-block-bottom">
+        
+        <img src="https://drive.google.com/thumbnail?id=1TkvsMUGnF-2f8ugjxjF91rkkFWih0Wl8&sz=w800" alt="Monograma J y J" style="width: 100px; height: auto; margin: 0 auto 15px auto; display: block; opacity: 1.0;">
+        <p>Con amor, Josselyn y Jordán</p>
+        <small style="display:block; margin-top:10px; opacity:0.7; letter-spacing:1px; text-transform:uppercase; font-size:0.6rem;">¡Los esperamos! 🤍</small>
+      </div>
+
+    </div> </div>
+
+  <script>
+// 0. DESACTIVAR MEMORIA DE SCROLL DEL NAVEGADOR (Evita el salto al final)
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+
+    // Aseguramos que al refrescar siempre empiece en el sobre
+    window.onload = function() {
+      window.scrollTo(0, 0);
+    };
+    // FUNCIÓN PARA CARGAR MENSAJES DESDE LA PLANILLA
+    async function cargarMensajesLibro() {
+      const track = document.getElementById('guestbook-track');
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbzO8E6ROcWA-G5pTgVMyshDuCstAM69nnYGIq0_d0vlSs2HDDFMB600rJwX5OBkQmsj/exec'; // <--- PEGA AQUÍ TU URL
+
+      try {
+        const response = await fetch(scriptURL + '?action=readMessages');
+        const mensajes = await response.json();
+
+        if (mensajes.length > 0) {
+          track.innerHTML = ''; // Limpiamos el mensaje de "Aún no hay mensajes"
+          
+          mensajes.forEach(m => {
+            const slide = document.createElement('div');
+            slide.className = 'carousel-slide';
+            slide.innerHTML = `
+              <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; color: var(--sage-green);">"${m.mensaje}"</p>
+              <p style="font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: bold; margin-top: 10px; color: var(--text-dark);">- ${m.nombre}</p>
+            `;
+            track.appendChild(slide);
+          });
+          
+          // Iniciar movimiento si hay más de uno
+          if(mensajes.length > 1) iniciarCarruselAuto();
+        }
+      } catch (error) {
+        console.error("Error cargando mensajes:", error);
+      }
+    }
+
+    // Ejecutar al cargar la página
+    document.addEventListener("DOMContentLoaded", cargarMensajesLibro);
+
+    
+
+    // 1. GESTIÓN DE INVITADOS Y PASES
+    document.addEventListener("DOMContentLoaded", function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const tipo = urlParams.get('inv'); 
+      const mensajePaseInterior = document.getElementById('mensaje-pase');
+      const mensajePaseSobre = document.getElementById('envelope-pass-message');
+
+      if (tipo === 'solo') {
+        if(mensajePaseInterior) mensajePaseInterior.innerHTML = "Invitación personal e intransferible (Válida para 1 persona).";
+        if(mensajePaseSobre) { mensajePaseSobre.innerHTML = "Válida para ti"; mensajePaseSobre.style.display = 'block'; }
+      } else if (tipo === 'pareja') {
+        if(mensajePaseInterior) mensajePaseInterior.innerHTML = "Invitación para ti y tu acompañante.";
+        if(mensajePaseSobre) { mensajePaseSobre.innerHTML = "Para ti y un acompañante"; mensajePaseSobre.style.display = 'block'; }
+      } else {
+        if(mensajePaseInterior) mensajePaseInterior.innerHTML = "Tu pase es válido por los cupos indicados internamente.";
+      }
+    });
+
+// FUNCIÓN PARA VOLVER A CERRAR
+    function closeEnvelope() {
+      const envelopeScreen = document.getElementById('envelope-screen');
+      const content = document.getElementById('main-content');
+      const envWrapper = document.querySelector('.env-wrapper');
+      
+      content.style.opacity = '0';
+      setTimeout(() => {
+        content.style.display = 'none';
+        envelopeScreen.style.display = 'flex';
+        document.getElementById('env-closed').style.opacity = '1';
+        if (closed) closed.style.opacity = '1';
+        setTimeout(() => {
+          envelopeScreen.style.opacity = '1';
+          window.scrollTo(0, 0);
+        }, 100);
+      }, 1200);
+    }
+
+    // 2. APERTURA DEL SOBRE (TU VERSIÓN ORIGINAL Y LIMPIA)
+    function abrirSobreRealista() {
+    const closed = document.getElementById('env-closed');
+    const screen = document.getElementById('envelope-screen');
+    const main = document.getElementById('main-content');
+    const music = document.getElementById('bg-music');
+
+    if(music) {
+      music.volume = 0.4;
+      music.play().catch(e => console.log("Música requiere interacción"));
+    }
+
+    if (closed) closed.style.opacity = '0';
+
+    setTimeout(() => {
+      screen.style.opacity = '0';
+      
+      setTimeout(() => {
+        // RESET DEL SCROLL EN LA OSCURIDAD
+        window.scrollTo(0, 0); 
+        
+        screen.style.display = 'none';
+        main.style.display = 'block';
+        main.style.opacity = '0';
+        
+        setTimeout(() => {
+          main.style.opacity = '1';
+        }, 50);
+      }, 1000);
+    }, 500);
+  }
+    // 3. CONTADOR
+    const weddingDate = new Date("Oct 3, 2026 18:00:00").getTime();
+    setInterval(function() {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+      if(distance < 0) return;
+      document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+      document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+      document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+      document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
+    }, 1000);
+
+    // 4. ANIMACIONES FADE-IN
+    document.addEventListener("DOMContentLoaded", function() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('show'); });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.fade-in, .time-item').forEach((el) => observer.observe(el));
+    });
+
+    // 5. FORMULARIO UNIFICADO (APPS SCRIPT)
+    function enviarFormularioYMensaje() {
+      const btn = document.getElementById('submit-btn');
+      const form = document.getElementById('rsvp-form');
+      const nameInput = document.getElementById('guest-name');
+      const msgInput = document.getElementById('guest-message');
+      
+      // Validación básica
+      if(!nameInput.value || !form.asistencia.value) { 
+        alert("Por favor, completa tu nombre y si asistirás."); 
+        return; 
+      }
+      
+      btn.innerText = 'Enviando...'; 
+      btn.disabled = true;
+      
+      // Conexión con tu Google Sheets
+      google.script.run.withSuccessHandler(function(respuesta) {
+        if(respuesta === "Éxito") { 
+          form.style.display = 'none'; 
+          document.getElementById('form-response').style.display = 'block'; 
+          // Esto hace que la pantalla se deslice suavemente hacia el mensaje de éxito
+  document.getElementById('form-response').scrollIntoView({ behavior: 'smooth', block: 'center' });
+          
+          // Actualizar el carrusel visualmente si el invitado dejó mensaje
+          if(msgInput && msgInput.value.trim() !== "") {
+            const track = document.getElementById('carousel-track');
+            if(track) {
+              const newSlide = document.createElement('div');
+              newSlide.className = 'carousel-slide';
+              newSlide.innerHTML = `
+                <div class="guest-msg-card">
+                  <p>"${msgInput.value}"</p>
+                  <span>- ${nameInput.value}</span>
+                </div>
+              `;
+              track.insertBefore(newSlide, track.firstChild);
+              currentSlide = 0; // Mostrar el mensaje recién creado
+              updateCarousel();
+            }
+          }
+        }
+        else { 
+          alert(respuesta); 
+          btn.innerText = 'Enviar Confirmación'; 
+          btn.disabled = false; 
+        }
+      }).procesarRSVP(form);
+    }
+
+    // 6. LÓGICA DEL CARRUSEL
+    let currentSlide = 0;
+    function updateCarousel() {
+      const track = document.getElementById('carousel-track');
+      if(!track) return;
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+    function moveSlide(direction) {
+      const track = document.getElementById('carousel-track');
+      if(!track) return;
+      const slides = track.querySelectorAll('.carousel-slide');
+      if(slides.length === 0) return;
+      
+      currentSlide += direction;
+      if (currentSlide < 0) currentSlide = slides.length - 1; // Vuelve al final
+      if (currentSlide >= slides.length) currentSlide = 0; // Vuelve al inicio
+      updateCarousel();
+    }
+
+    // MAGIA DEL FORMULARIO RSVP INTELIGENTE
+    document.addEventListener("DOMContentLoaded", function() {
+      // 1. Lógica de Asistencia (Mostrar/Ocultar campos)
+      const asisteSi = document.getElementById('asiste-si');
+      const asisteNo = document.getElementById('asiste-no');
+      const camposExtra = document.getElementById('campos-extra');
+      const mensajeNo = document.getElementById('mensaje-no');
+
+      function actualizarVistaFormulario() {
+        if (asisteSi.checked) {
+          camposExtra.style.display = 'block';
+          mensajeNo.style.display = 'none';
+        } else if (asisteNo.checked) {
+          camposExtra.style.display = 'none';
+          mensajeNo.style.display = 'block';
+        }
+      }
+
+      asisteSi.addEventListener('change', actualizarVistaFormulario);
+      asisteNo.addEventListener('change', actualizarVistaFormulario);
+
+      // 2. Lógica de Restricción Alimentaria "Otra"
+      const radiosDieta = document.querySelectorAll('input[name="restricciones"]');
+      const dietaOtraTexto = document.getElementById('dieta-otra-texto');
+
+      radiosDieta.forEach(radio => {
+        radio.addEventListener('change', function() {
+          if (this.value === 'Otra') {
+            dietaOtraTexto.style.display = 'block';
+            dietaOtraTexto.required = true; // Lo hace obligatorio si marcan "Otra"
+          } else {
+            dietaOtraTexto.style.display = 'none';
+            dietaOtraTexto.required = false;
+          }
+        });
+      });
+    });
+
+       // MOTOR DEL CARRUSEL (AUTOMÁTICO Y MANUAL)
+    let indiceCarrusel = 0;
+    let intervaloCarrusel;
+
+    function moverCarrusel(direccion) {
+      const track = document.getElementById('guestbook-track');
+      const slides = document.querySelectorAll('.carousel-slide');
+      if (slides.length <= 1) return; // No se mueve si hay 1 solo mensaje
+
+      indiceCarrusel += direccion;
+
+      // Logica para que sea un ciclo infinito
+      if (indiceCarrusel >= slides.length) {
+        indiceCarrusel = 0;
+      } else if (indiceCarrusel < 0) {
+        indiceCarrusel = slides.length - 1;
+      }
+
+      const anchoSlide = slides[0].offsetWidth;
+      track.style.transform = `translateX(-${indiceCarrusel * anchoSlide}px)`;
+
+      // Si el usuario toca la flecha, reiniciamos el tiempo para que no le salte el mensaje mientras lee
+      clearInterval(intervaloCarrusel);
+      iniciarCarruselAuto();
+    }
+
+    function iniciarCarruselAuto() {
+      // Avanza solo cada 6 segundos para dar tiempo a leer con calma
+      intervaloCarrusel = setInterval(() => {
+        moverCarrusel(1);
+      }, 6000); 
+    }
+  </script>
+<script>
+  function centrarInvitacion() {
+    const seccion = document.getElementById('seccion-invitacion');
+    if (seccion) {
+      // Este código hace que baje suavemente y coloque el bloque justo en el centro de la pantalla
+      seccion.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+</script>
+
+<script>
+  // VIGILANTE DE ANIMACIONES
+  // Se encarga de disparar el efecto solo cuando la persona los está viendo
+  const observadorTextos = new IntersectionObserver((entradas) => {
+    entradas.forEach(entrada => {
+      if (entrada.isIntersecting) {
+        entrada.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.2 }); /* Se activa cuando apenas asoma el 20% del texto */
+
+  // Le decimos al vigilante a quién tiene que mirar
+  document.querySelectorAll('.texto-aparecer, .escribir-mano').forEach(elemento => {
+    observadorTextos.observe(elemento);
+  });
+</script>
+</body>
+</html>
