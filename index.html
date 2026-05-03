@@ -913,17 +913,17 @@
           <div class="timeline" style="margin-top: 0;">
             <div class="time-item fade-in"><div class="time-content">
               <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=150&auto=format&fit=crop" class="story-photo" alt="Recepción">
-              <div class="time-text"><h4>17:30 hrs</h4><p>Bienvenida</p></div>
+              <div class="time-text"><h4>18:00 hrs</h4><p>Bienvenida</p></div>
             </div></div>
             
             <div class="time-item fade-in"><div class="time-content">
               <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=150&auto=format&fit=crop" class="story-photo" alt="Ceremonia">
-              <div class="time-text"><h4>18:00 hrs</h4><p>Ceremonia</p></div>
+              <div class="time-text"><h4>18:30 hrs</h4><p>Ceremonia</p></div>
             </div></div>
             
             <div class="time-item fade-in"><div class="time-content">
               <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=150&auto=format&fit=crop" class="story-photo" alt="Cóctel">
-              <div class="time-text"><h4>19:00 hrs</h4><p>Cóctel</p></div>
+              <div class="time-text"><h4>19:30 hrs</h4><p>Cóctel</p></div>
             </div></div>
 
             <div class="time-item fade-in"><div class="time-content">
@@ -1205,24 +1205,76 @@
 
     
 
-    // 1. GESTIÓN DE INVITADOS Y PASES
-    document.addEventListener("DOMContentLoaded", function() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const tipo = urlParams.get('inv'); 
-      const mensajePaseInterior = document.getElementById('mensaje-pase');
-      const mensajePaseSobre = document.getElementById('envelope-pass-message');
+    // 1. GESTIÓN DE INVITADOS, PASES Y RSVP (VERSIÓN UNIFICADA)
+document.addEventListener("DOMContentLoaded", function() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const tipo = urlParams.get('inv'); 
+  
+  const mensajePaseInterior = document.getElementById('mensaje-pase');
+  const mensajePaseSobre = document.getElementById('envelope-pass-message');
+  const seccionRegalos = document.getElementById('seccion-regalos');
+  const seccionAcompanante = document.getElementById('seccion-acompanante');
+  const camposExtra = document.getElementById('campos-extra');
+  const mensajeNo = document.getElementById('mensaje-no');
+  const asisteSi = document.getElementById('asiste-si');
+  const asisteNo = document.getElementById('asiste-no');
 
-      if (tipo === 'solo') {
-        if(mensajePaseInterior) mensajePaseInterior.innerHTML = "Esta invitación es solo para ti.";
-        if(mensajePaseSobre) { mensajePaseSobre.innerHTML = "Esta invitación es exclusiva para ti"; mensajePaseSobre.style.display = 'block'; }
-      } else if (tipo === 'pareja') {
-        if(mensajePaseInterior) mensajePaseInterior.innerHTML = "Invitación para ti y un acompañante.";
-        if(mensajePaseSobre) { mensajePaseSobre.innerHTML = "Invitación para ti y un acompañante"; mensajePaseSobre.style.display = 'block'; }
+  // --- A. CONFIGURACIÓN DE MENSAJES Y REGALOS ---
+  if (tipo === 'solo') {
+    if(mensajePaseInterior) mensajePaseInterior.innerHTML = "Esta invitación es solo para ti.";
+    if(mensajePaseSobre) { mensajePaseSobre.innerHTML = "Esta invitación es exclusiva para ti"; mensajePaseSobre.style.display = 'block'; }
+  } 
+  else if (tipo === 'pareja') {
+    if(mensajePaseInterior) mensajePaseInterior.innerHTML = "Invitación para ti y un acompañante.";
+    if(mensajePaseSobre) { mensajePaseSobre.innerHTML = "Invitación para ti y un acompañante"; mensajePaseSobre.style.display = 'block'; }
+  } 
+  else if (tipo === 'familia') {
+    if(mensajePaseInterior) mensajePaseInterior.innerHTML = "Invitación para ti y un acompañante.";
+    if(mensajePaseSobre) { mensajePaseSobre.innerHTML = "Especialmente para ti y un acompañante"; mensajePaseSobre.style.display = 'block'; }
+    // OCULTAR MESA DE REGALOS PARA FAMILIA
+    if(seccionRegalos) seccionRegalos.style.display = 'none';
+  } 
+  else {
+    if(mensajePaseInterior) mensajePaseInterior.innerHTML = "Válido por los cupos indicados internamente.";
+  }
+
+  // --- B. LÓGICA DEL FORMULARIO RSVP ---
+  function actualizarVistaFormulario() {
+    if (asisteSi && asisteSi.checked) {
+      if(camposExtra) camposExtra.style.display = 'block';
+      if(mensajeNo) mensajeNo.style.display = 'none';
+
+      // Si es "solo", escondemos el campo del acompañante
+      if (tipo === 'solo' && seccionAcompanante) {
+        seccionAcompanante.style.display = 'none';
+      } else if (seccionAcompanante) {
+        seccionAcompanante.style.display = 'block';
+      }
+    } 
+    else if (asisteNo && asisteNo.checked) {
+      if(camposExtra) camposExtra.style.display = 'none';
+      if(mensajeNo) mensajeNo.style.display = 'block';
+    }
+  }
+
+  if(asisteSi) asisteSi.addEventListener('change', actualizarVistaFormulario);
+  if(asisteNo) asisteNo.addEventListener('change', actualizarVistaFormulario);
+
+  // --- C. RESTRICCIONES ALIMENTARIAS ---
+  const radiosDieta = document.querySelectorAll('input[name="restricciones"]');
+  const dietaOtraTexto = document.getElementById('dieta-otra-texto');
+
+  radiosDieta.forEach(radio => {
+    radio.addEventListener('change', function() {
+      if (this.value === 'Otra') {
+        if(dietaOtraTexto) { dietaOtraTexto.style.display = 'block'; dietaOtraTexto.required = true; }
       } else {
-        if(mensajePaseInterior) mensajePaseInterior.innerHTML = "Válido por los cupos indicados internamente.";
+        if(dietaOtraTexto) { dietaOtraTexto.style.display = 'none'; dietaOtraTexto.required = false; }
       }
     });
-
+  });
+});
+     
 // FUNCIÓN PARA VOLVER A CERRAR
     function closeEnvelope() {
       const envelopeScreen = document.getElementById('envelope-screen');
@@ -1394,55 +1446,7 @@
       updateCarousel();
     }
 
-    // MAGIA DEL FORMULARIO RSVP INTELIGENTE (Versión Final Unificada)
-document.addEventListener("DOMContentLoaded", function() {
-  const asisteSi = document.getElementById('asiste-si');
-  const asisteNo = document.getElementById('asiste-no');
-  const camposExtra = document.getElementById('campos-extra');
-  const mensajeNo = document.getElementById('mensaje-no');
-  
-  // Capturamos el tipo de invitado desde la URL
-  const urlParams = new URLSearchParams(window.location.search);
-  const tipoInvitado = urlParams.get('inv'); 
-  const seccionAcompanante = document.getElementById('seccion-acompanante');
-
-  function actualizarVistaFormulario() {
-    if (asisteSi.checked) {
-      camposExtra.style.display = 'block';
-      mensajeNo.style.display = 'none';
-
-      // Lógica Crítica: Si es "solo", escondemos la sección del acompañante aunque el resto sea visible
-      if (tipoInvitado === 'solo' && seccionAcompanante) {
-        seccionAcompanante.style.display = 'none';
-      } else if (seccionAcompanante) {
-        seccionAcompanante.style.display = 'block';
-      }
-
-    } else if (asisteNo.checked) {
-      camposExtra.style.display = 'none';
-      mensajeNo.style.display = 'block';
-    }
-  }
-
-  asisteSi.addEventListener('change', actualizarVistaFormulario);
-  asisteNo.addEventListener('change', actualizarVistaFormulario);
-
-  // Lógica de Restricción Alimentaria "Otra" (Se mantiene igual)
-  const radiosDieta = document.querySelectorAll('input[name="restricciones"]');
-  const dietaOtraTexto = document.getElementById('dieta-otra-texto');
-
-  radiosDieta.forEach(radio => {
-    radio.addEventListener('change', function() {
-      if (this.value === 'Otra') {
-        dietaOtraTexto.style.display = 'block';
-        dietaOtraTexto.required = true;
-      } else {
-        dietaOtraTexto.style.display = 'none';
-        dietaOtraTexto.required = false;
-      }
-    });
-  });
-});
+    
 
        // MOTOR DEL CARRUSEL (AUTOMÁTICO Y MANUAL)
     let indiceCarrusel = 0;
