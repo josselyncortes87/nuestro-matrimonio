@@ -738,6 +738,10 @@
   <audio id="bg-music" loop preload="auto">
     <source src="cancion.mp3" type="audio/mpeg">
   </audio>
+   <!-- Botón flotante de música -->
+  <button id="btn-musica" onclick="toggleMusica()" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; background: rgba(255,255,255,0.8); border: 1px solid #9DB5A9; border-radius: 50%; width: 45px; height: 45px; font-size: 20px; cursor: pointer; display: none; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: 0.3s;">
+    🔊
+  </button>
 
   <div id="envelope-screen">
     <div class="envelope-container" onclick="abrirSobreRealista()" style="position: relative; display: inline-block;">
@@ -1164,6 +1168,18 @@
       }, 1200);
     }
 
+     // Lógica para apagar y prender la música con el botón
+  function toggleMusica() {
+    const music = document.getElementById('bg-music');
+    const btn = document.getElementById('btn-musica');
+    if (music.paused) {
+      music.play();
+      btn.innerHTML = '🔊';
+    } else {
+      music.pause();
+      btn.innerHTML = '🔇';
+    }
+  }
     // 2. APERTURA DEL SOBRE (TU VERSIÓN ORIGINAL Y LIMPIA)
     function abrirSobreRealista() {
     const closed = document.getElementById('env-closed');
@@ -1191,6 +1207,10 @@
         
         setTimeout(() => {
           main.style.opacity = '1';
+          
+          // El botón aparece junto con la invitación
+          document.getElementById('btn-musica').style.display = 'block';
+          
         }, 50);
       }, 1000);
     }, 500);
@@ -1396,6 +1416,8 @@
   document.querySelectorAll('.texto-aparecer, .escribir-mano').forEach(elemento => {
     observadorTextos.observe(elemento);
   });
+
+   
 </script>
 </body>
 </html>
