@@ -772,14 +772,16 @@
 .palabra-izq {
   display: inline-block;
   opacity: 0;
-  transform: translateX(-50px);
-  transition: all 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+  transform: translateX(-100px); /* Entra de más lejos */
+  transition: all 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+  white-space: nowrap;
 }
 .palabra-der {
   display: inline-block;
   opacity: 0;
-  transform: translateX(50px);
-  transition: all 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+  transform: translateX(100px); /* Entra de más lejos */
+  transition: all 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+  white-space: nowrap;
 }
 .visible .palabra-izq, .visible .palabra-der {
   opacity: 1;
@@ -799,6 +801,44 @@
   transform: scale(1);
 }
 
+   /* 5. EFECTO DESTELLO (Para el Monograma Redondo) */
+.efecto-destello {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(155, 169, 147, 0.2); /* Brillo suave color sage de base */
+  transition: box-shadow 0.5s ease;
+}
+.efecto-destello::after {
+  content: "";
+  position: absolute;
+  top: -50%; left: -150%; /* Empieza fuera de la imagen */
+  width: 200%; height: 200%;
+  background: rgba(255, 255, 255, 0.6); /* El destello blanco */
+  transform: rotate(30deg);
+  animation: destelloSparkle 6s infinite; /* Se dispara cada 6 segundos */
+}
+
+@keyframes destelloSparkle {
+  0% { left: -150%; }
+  20% { left: 100%; } /* Pasa rápido sobre la imagen */
+  100% { left: 100%; } /* Se queda esperando en silencio */
+}
+
+   /* EL LATIDO PARA EL BOTÓN DE ENVIAR */
+.btn-latido {
+  animation: latidoBoton 2.5s infinite ease-in-out;
+}
+
+@keyframes latidoBoton {
+  0%, 100% { 
+    transform: scale(1); 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+  }
+  50% { 
+    transform: scale(1.03); /* Crece un poquitito */
+    box-shadow: 0 8px 20px rgba(157, 181, 169, 0.6); /* Destello color sage-green */
+  }
+}
 </style>
 </head>
 <body>
@@ -930,8 +970,19 @@
         <!-- CAJA INVISIBLE PARA CONTROLAR LOS ESPACIOS -->
 <div style="margin-top: -40px; margin-bottom: 10px; text-align: center;">
   
-  <h2 class="title-cursive texto-aparecer" style="text-align: center; color: var(--sage-green); margin-top: 30px; margin-bottom: 20px; white-space: nowrap; font-size: clamp(2.2rem, 10vw, 4.5rem);">
-  <span class="escribir-seguro">Nuestra Historia</span>
+  <h2 class="texto-aparecer" style="
+    font-family: 'Cormorant Garamond', serif; 
+    font-size: clamp(3rem, 15vw, 6rem); /* <--- AHORA SÍ GIGANTE Y ADAPTABLE */
+    font-weight: 300; 
+    text-align: center; 
+    color: var(--sage-green); 
+    margin-top: 50px; 
+    margin-bottom: 30px; 
+    white-space: nowrap; 
+    overflow: hidden; /* Para que las palabras entren de afuera sin verse */
+    padding: 20px 0; /* Espacio arriba y abajo para que NO se corte */
+">
+  <span class="palabra-izq">Nuestra</span>&nbsp;<span class="palabra-der">Historia</span>
 </h2>
 
 </div>
@@ -1055,7 +1106,7 @@
         <textarea id="guest-message" name="mensaje" rows="2" style="width: 100%; padding: 10px; margin-top: 5px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 8px; font-family: 'Montserrat', sans-serif; box-sizing: border-box;"></textarea>
       </div>
 
-      <button type="button" class="btn-solid btn-latido" id="submit-btn" onclick="enviarFormularioYMensaje()" style="width: 100%;">Enviar Respuesta</button>
+      <button type="button" class="btn-solid btn-latido" id="submit-btn" onclick="enviarFormularioYMensaje()" style="width: 100%; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">Enviar Respuesta</button>
     </form>
     <div id="form-response" style="display: none; color: var(--sage-green); font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-style: italic; margin-top: 20px;">¡Gracias! Hemos recibido tu respuesta 🤍</div>
   </div>
@@ -1181,7 +1232,7 @@
 
       <!-- ESTE ES TU BLOQUE VERDE (INTACTO) -->
       <div class="color-block-bottom">
-        <img src="https://drive.google.com/thumbnail?id=1TkvsMUGnF-2f8ugjxjF91rkkFWih0Wl8&sz=w800" alt="Monograma J y J" class="efecto-campana" style="width: 100px; height: auto; margin: 0 auto 15px auto; display: block; opacity: 1.0;">
+        <img src="https://drive.google.com/thumbnail?id=1TkvsMUGnF-2f8ugjxjF91rkkFWih0Wl8&sz=w800" alt="Monograma J y J" class="efecto-destello" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; margin: 0 auto 15px auto; display: block; opacity: 1.0; padding: 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
         <p>Con amor, Josselyn y Jordán</p>
         <small style="display:block; margin-top:10px; opacity:0.7; letter-spacing:1px; text-transform:uppercase; font-size:0.6rem;">¡Los esperamos! 🤍</small>
       </div>
