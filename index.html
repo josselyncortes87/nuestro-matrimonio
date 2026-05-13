@@ -738,6 +738,67 @@
   font-weight: 500;
 }
 
+   /* =========================================
+   ANIMACIONES CINEMATOGRÁFICAS (FASE 3)
+   ========================================= */
+
+/* 1. EL EFECTO CAMPANA PARA MONOGRAMAS */
+.efecto-campana {
+  transform-origin: top center; /* Hace que cuelgue desde arriba */
+  animation: balanceoCampana 4s ease-in-out infinite;
+}
+@keyframes balanceoCampana {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(8deg); }
+  75% { transform: rotate(-8deg); }
+}
+
+/* 2. ESCRITURA A MANO 100% SEGURA (A prueba de Android) */
+.escribir-seguro {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 0; /* Empieza en 0 ancho */
+  vertical-align: bottom;
+  /* El tiempo (2.5s) define qué tan lento escribe */
+  transition: max-width 2.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+/* Cuando el vigilante lo ve, expande el ancho al 100% revelando la letra */
+.visible .escribir-seguro {
+  max-width: 100%;
+}
+
+/* 3. PALABRAS ENCONTRADAS (Entran por lados opuestos) */
+.palabra-izq {
+  display: inline-block;
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.palabra-der {
+  display: inline-block;
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.visible .palabra-izq, .visible .palabra-der {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* 4. FUNDIDO DRAMÁTICO (Efecto cine, de borroso a nítido) */
+.fundido-dramatico {
+  opacity: 0;
+  filter: blur(8px);
+  transform: scale(0.85); /* Empieza un poco más pequeño */
+  transition: all 1.5s ease-out;
+}
+.fundido-dramatico.visible {
+  opacity: 1;
+  filter: blur(0);
+  transform: scale(1);
+}
+
 </style>
 </head>
 <body>
@@ -869,9 +930,8 @@
         <!-- CAJA INVISIBLE PARA CONTROLAR LOS ESPACIOS -->
 <div style="margin-top: -40px; margin-bottom: 10px; text-align: center;">
   
-  <!-- EL TEXTO ANIMADO (sin márgenes, solo hace su magia) -->
-  <h2 class="title-cursive fade-in" style="text-align: center; color: var(--sage-green); margin-top: 30px; margin-bottom: 20px;">
-  Nuestra Historia
+  <h2 class="title-cursive texto-aparecer" style="text-align: center; color: var(--sage-green); margin-top: 30px; margin-bottom: 20px; white-space: nowrap; font-size: clamp(2.2rem, 10vw, 4.5rem);">
+  <span class="escribir-seguro">Nuestra Historia</span>
 </h2>
 
 </div>
@@ -888,7 +948,7 @@
 
         <div class="fade-in" style="position: relative; background-color: #f4f5f1; background-image: url('https://drive.google.com/thumbnail?id=1GwzMtdDSGQtiajzR57GaQrX_Srp8Dl1w&sz=w800'); background-size: cover; background-position: center; border: 1px solid var(--sage-green); border-radius: 20px; padding: 50px 10px 10px 10px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); margin-bottom: 50px; overflow: hidden;">
           
-          <h2 class="title-cursive-small fade-in" style="margin-bottom: 20px;">Programa</h2>
+          <h2 class="title-cursive-small texto-aparecer fundido-dramatico" style="margin-bottom: 20px;">Programa</h2>
           
           <div class="timeline" style="margin-top: 0;">
             <div class="time-item fade-in"><div class="time-content">
@@ -1008,7 +1068,9 @@
   <!-- NUEVO SEPARADOR DE HOJA -->
   <img src="separador3.jpeg" alt="Separador Hojas" class="flotar-suave" style="width: 350px; max-width: 100%; height: auto; margin: 0 auto 15px auto; display: block; opacity: 0.8;">
           
-  <h2 class="title-cursive-small" style="text-align: center; color: var(--sage-green); margin-bottom: 25px;">Detalles Importantes</h2>
+  <h2 class="title-cursive-small texto-aparecer" style="text-align: center; color: var(--sage-green); margin-bottom: 25px;">
+  <span class="palabra-izq">Detalles</span> <span class="palabra-der">Importantes</span>
+</h2>
           
           <details style="margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
             <summary style="font-family: 'Montserrat', sans-serif; color: var(--text-dark); font-size: 0.95rem; font-weight: bold; cursor: pointer; outline: none;">¿Hay código de vestimenta?</summary>
@@ -1107,7 +1169,7 @@
        <div class="fade-in" style="margin-top: 40px; margin-bottom: 20px; text-align: center;">
   
   <!-- MONOGRAMA DE INICIALES (MÁS GRANDE Y PROTAGONISTA) -->
-  <img src="iniciales1.png" alt="Monograma Iniciales" class="flotar-suave" style="width: 200px; height: auto; margin: 0 auto 25px auto; display: block; opacity: 1;">
+  <img src="iniciales1.png" alt="Monograma Iniciales" class="efecto-campana" style="width: 200px; height: auto; margin: 0 auto 25px auto; display: block; opacity: 1;">
 
   <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; color: var(--text-dark); margin-bottom: 15px;">Y para ponernos a tono... te dejamos nuestra playlist!</p>
   
@@ -1119,7 +1181,7 @@
 
       <!-- ESTE ES TU BLOQUE VERDE (INTACTO) -->
       <div class="color-block-bottom">
-        <img src="https://drive.google.com/thumbnail?id=1TkvsMUGnF-2f8ugjxjF91rkkFWih0Wl8&sz=w800" alt="Monograma J y J" class="flotar-suave" style="width: 100px; height: auto; margin: 0 auto 15px auto; display: block; opacity: 1.0;">
+        <img src="https://drive.google.com/thumbnail?id=1TkvsMUGnF-2f8ugjxjF91rkkFWih0Wl8&sz=w800" alt="Monograma J y J" class="efecto-campana" style="width: 100px; height: auto; margin: 0 auto 15px auto; display: block; opacity: 1.0;">
         <p>Con amor, Josselyn y Jordán</p>
         <small style="display:block; margin-top:10px; opacity:0.7; letter-spacing:1px; text-transform:uppercase; font-size:0.6rem;">¡Los esperamos! 🤍</small>
       </div>
