@@ -871,6 +871,10 @@
 .carousel-slide span, .guest-msg-card span, .carousel-slide p + p {
   color: #8b9a8c !important; /* Un sage suave */
 }
+
+   .show .subrayado-linea, .visible .subrayado-linea {
+  width: 100%; 
+}
 </style>
 </head>
 <body>
@@ -912,10 +916,11 @@
         style="width: 100%; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.15));" alt="Decoración">
 </div>
 
-        <div class="item-recuerdo recuerdo-sello efecto-campana">
-           <img src="https://drive.google.com/thumbnail?id=1qeAqhZ9TLlzHfbbSriLHi_WPhepX8WMH&sz=w400" 
-                style="width: 100%; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));" alt="Sello Lacre">
-        </div>
+        <div class="item-recuerdo recuerdo-sello">
+  <img src="https://drive.google.com/thumbnail?id=1qeAqhZ9TLlzHfbbSriLHi_WPhepX8WMH&sz=w400" 
+       class="efecto-campana" 
+       style="width: 100%; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));" alt="Sello Lacre">
+</div>
 
         <div class="item-recuerdo recuerdo-tarjeta-pequena" style="background: none; border: none; box-shadow: none; padding: 0;">
            <img src="https://drive.google.com/thumbnail?id=11EIRPiEPQzdimnAun9oFIFjWqq-A07rG&sz=w500" 
@@ -1081,10 +1086,12 @@
 </h2>
 </div>
 
-  <p class="fade-in texto-blanco-asistencia subrayado-contenedor" style="font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-top: 15px; text-align: center;">
-  <strong>Antes del 30 de junio</strong>
-  <span class="subrayado-linea"></span>
-</p>
+  <div style="text-align: center; margin-top: 15px;">
+  <p class="fade-in texto-blanco-asistencia subrayado-contenedor" style="font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; display: inline-block; margin: 0;">
+    <strong>Antes del 30 de junio</strong>
+    <span class="subrayado-linea"></span>
+  </p>
+</div>
   
   <p id="mensaje-pase" class="fade-in" style="font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: #f4f4f4; font-style: italic; margin-top: 10px; text-align: center;"></p>
 
