@@ -841,13 +841,13 @@
 }
    /* --- NUEVAS ANIMACIONES DE DETALLE --- */
 
-/* 1. EFECTO RESPIRAR (Para el separador de asistencia) */
+/* 1. EFECTO RESPIRAR (Más notorio y profundo) */
 .efecto-respirar {
   animation: respirar 6s ease-in-out infinite;
 }
 @keyframes respirar {
-  0%, 100% { transform: scale(1); opacity: 0.9; }
-  50% { transform: scale(1.03); opacity: 1; }
+  0%, 100% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.08); opacity: 1; } /* Subimos el zoom a 1.08 */
 }
 
 /* 2. EFECTO VIENTO (Balanceo suave para las hojas de FAQ) */
@@ -872,9 +872,54 @@
   color: #8b9a8c !important; /* Un sage suave */
 }
 
-   .show .subrayado-linea, .visible .subrayado-linea {
+   .subrayado-magico {
+  position: relative;
+  display: inline-block;
+}
+.subrayado-magico::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px; /* Separación perfecta del texto */
+  width: 0;
+  height: 2px;
+  background-color: #ffffff;
+  transition: width 1.2s ease-out 0.6s; /* Se dibuja 0.6 seg después de aparecer */
+}
+/* El vigilante activa la línea */
+.show.subrayado-magico::after {
   width: 100%; 
 }
+/* =========================================
+   EFECTO POLAROID (CASCADA Y REVELADO)
+   ========================================= */
+
+/* 1. Estado inicial: transparentes, abajo y con filtro sepia antiguo */
+.polaroid-magica {
+  opacity: 0;
+  transform: translateY(50px) scale(0.9);
+  filter: sepia(0.8) brightness(0.8);
+  transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 2. Tiempos diferentes para que caigan 1 por 1 */
+.polaroid-magica:nth-child(1) { transition-delay: 0.2s; --giro-final: -3deg; }
+.polaroid-magica:nth-child(2) { transition-delay: 0.6s; --giro-final: 2deg; }
+.polaroid-magica:nth-child(3) { transition-delay: 1.0s; --giro-final: -1deg; }
+
+/* 3. Cuando el vigilante las ve, cobran su color y posición real */
+.show .polaroid-magica {
+  opacity: 1;
+  transform: translateY(0) scale(1) rotate(var(--giro-final));
+  filter: sepia(0) brightness(1); /* Pasan a full color */
+}
+
+/* 4. Aseguramos que el zoom al pasar el dedo/mouse siga funcionando */
+.show .polaroid-magica:hover {
+  transform: rotate(0deg) scale(1.1) !important;
+  z-index: 10;
+  box-shadow: 0 15px 25px rgba(0,0,0,0.15);
+}   
 </style>
 </head>
 <body>
@@ -918,7 +963,7 @@
 
         <div class="item-recuerdo recuerdo-sello">
   <img src="https://drive.google.com/thumbnail?id=1qeAqhZ9TLlzHfbbSriLHi_WPhepX8WMH&sz=w400" 
-       class="efecto-campana" 
+       class="efecto-respirar" 
        style="width: 100%; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));" alt="Sello Lacre">
 </div>
 
@@ -999,8 +1044,10 @@
 </div>
 
       <div class="fade-in" style="width: 100%; max-width: 800px; margin: 60px auto; text-align: center;">
-        <img src="https://drive.google.com/thumbnail?id=1lbZ0CY1CV3Fv5M9O1TWLnG5irGhAh2Qm&sz=w1000" class="floral-separator" alt="Marco Hojas">
-      </div>
+  <img src="https://drive.google.com/thumbnail?id=1lbZ0CY1CV3Fv5M9O1TWLnG5irGhAh2Qm&sz=w1000" 
+       class="floral-separator efecto-respirar" 
+       alt="Marco Hojas">
+</div>
 
       <div class="section-container">
         
@@ -1025,9 +1072,15 @@
 </div>
         
         <div class="polaroid-row fade-in">
-  <div class="polaroid polaroid-viva-1"><img src="https://drive.google.com/thumbnail?id=1hiyKGWGFsxylrRrCfWrjXg80fwBDzipa&sz=w600" alt="Foto 1"></div>
-  <div class="polaroid polaroid-viva-2"><img src="https://drive.google.com/thumbnail?id=1-ug9d7bVDn8xRhd1oGiEkwzdMl-ZYNNS&sz=w600" alt="Foto 2"></div>
-  <div class="polaroid polaroid-viva-3"><img src="https://drive.google.com/thumbnail?id=1nHY-TiHU5bo9knGZWpPQhpLRUcHNo0my&sz=w600" alt="Foto 3"></div>
+  <div class="polaroid polaroid-magica">
+    <img src="https://drive.google.com/thumbnail?id=1hiyKGWGFsxylrRrCfWrjXg80fwBDzipa&sz=w600" alt="Foto 1">
+  </div>
+  <div class="polaroid polaroid-magica">
+    <img src="https://drive.google.com/thumbnail?id=1-ug9d7bVDn8xRhd1oGiEkwzdMl-ZYNNS&sz=w600" alt="Foto 2">
+  </div>
+  <div class="polaroid polaroid-magica">
+    <img src="https://drive.google.com/thumbnail?id=1nHY-TiHU5bo9knGZWpPQhpLRUcHNo0my&sz=w600" alt="Foto 3">
+  </div>
 </div>
 
         <p class="historia-texto fade-in">
@@ -1087,9 +1140,8 @@
 </div>
 
   <div style="text-align: center; margin-top: 15px;">
-  <p class="fade-in texto-blanco-asistencia subrayado-contenedor" style="font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; display: inline-block; margin: 0;">
-    <strong>Antes del 30 de junio</strong>
-    <span class="subrayado-linea"></span>
+  <p class="fade-in subrayado-magico texto-blanco-asistencia" style="font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin: 0;">
+    Antes del 30 de junio
   </p>
 </div>
   
