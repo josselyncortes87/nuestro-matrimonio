@@ -1676,6 +1676,31 @@ document.addEventListener("DOMContentLoaded", function() {
         moverCarrusel(1);
       }, 6000); 
     }
+
+     // =========================================
+    // MAGIA: PAUSAR CARRUSEL AL MANTENER PRESIONADO
+    // =========================================
+    
+    function detenerCarruselAuto() {
+      // Apaga el reloj automático
+      clearInterval(intervaloCarrusel); 
+    }
+
+    // Esperamos a que la página cargue para poner las "antenas"
+    document.addEventListener("DOMContentLoaded", function() {
+      const contenedorCarrusel = document.querySelector('.carousel-container');
+      
+      if(contenedorCarrusel) {
+        // 1. Para Celulares (Touch)
+        contenedorCarrusel.addEventListener('touchstart', detenerCarruselAuto); // Al tocar
+        contenedorCarrusel.addEventListener('touchend', iniciarCarruselAuto);   // Al soltar
+        
+        // 2. Para Computadoras (Mouse)
+        contenedorCarrusel.addEventListener('mousedown', detenerCarruselAuto);  // Al hacer clic
+        contenedorCarrusel.addEventListener('mouseup', iniciarCarruselAuto);    // Al soltar el clic
+        contenedorCarrusel.addEventListener('mouseleave', iniciarCarruselAuto); // Por si el mouse se sale de la caja
+      }
+    });
   </script>
 <script>
   function centrarInvitacion() {
