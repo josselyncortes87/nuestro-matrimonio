@@ -880,11 +880,16 @@
   content: '';
   position: absolute;
   left: 0;
-  bottom: -4px; /* Separación perfecta del texto */
+  bottom: -4px;
   width: 0;
   height: 2px;
+  background-color: var(--sage-green); /* Se adapta perfectamente sobre fondos claros */
+  transition: width 1.2s ease-out 0.6s;
+}
+
+/* Si está dentro del bloque verde de asistencia se mantiene blanco */
+.texto-blanco-asistencia.subrayado-magico::after {
   background-color: #ffffff;
-  transition: width 1.2s ease-out 0.6s; /* Se dibuja 0.6 seg después de aparecer */
 }
 /* El vigilante activa la línea */
 .show.subrayado-magico::after {
@@ -1140,8 +1145,8 @@
 </div>
 
   <div style="text-align: center; margin-top: 15px;">
-  <p class="fade-in subrayado-magico texto-blanco-asistencia" style="font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin: 0;">
-    Antes del 30 de agosto
+  <p class="fade-in texto-blanco-asistencia" style="font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; margin: 0;">
+    ¡Esperamos contar con tu presencia!
   </p>
 </div>
   
@@ -1265,11 +1270,29 @@
     </p>
 
     <p class="texto-tip-ruta" style="font-size: 1.15rem;">
-      <strong>Tips de ruta:</strong><br>
+      <span class="fade-in subrayado-magico" style="font-weight: bold; color: var(--text-dark); margin-bottom: 8px;">Tips de ruta:</span><br>
       Desde Santiago toma Costanera Norte, luego Ruta 68 en dirección a la costa. Pasando el Túnel Lo Prado, toma la salida hacia María Pinto. Al llegar al disco Pare de la salida, dobla a la izquierda (¡atentos ahí para no pasarse!). Luego de eso, solo sigue las indicaciones del GPS, que el camino es sencillo.
     </p>
 
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3326.578911790216!2d-71.14989432514555!3d-33.51233117336508!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662f77000341cdf%3A0x10857c3afd0836f6!2sCasona%20Fundo%20El%20Rosario!5e0!3m2!1ses-419!2scl!4v1776738898798!5m2!1ses-419!2scl" width="100%" height="180" style="border:0; margin-top: 15px; border-radius: 12px; filter: grayscale(10%); box-shadow: 0 5px 15px rgba(0,0,0,0.05);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <!-- VIDEO EXPLICATIVO DE LA RUTA -->
+    <div style="margin-top: 25px; padding-top: 20px; border-top: 1px dashed rgba(155, 169, 147, 0.4);">
+      <p style="font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-dark); margin-bottom: 12px;">
+        🎥 Video con tips para la ruta
+      </p>
+      
+      <div style="position: relative; width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.1); background: #000;">
+        <video controls playsinline style="width: 100%; display: block; max-height: 420px; border-radius: 12px;">
+          <source src="indicaciones-ruta.mp4" type="video/mp4">
+          Tu navegador no soporta reproducción de video.
+        </video>
+      </div>
+      
+      <small style="font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: #666; font-style: italic; display: block; margin-top: 8px;">
+        Revisa el video para no perderte en la salida hacia la Casona.
+      </small>
+    </div>
 
   </div>
 </div>
